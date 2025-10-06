@@ -4,6 +4,7 @@ author: ""
 ---
 
 This project was developed by **{the_pipe_operators}** For [STA 199: Introduction to Data Science](https://sta199-f25.github.io/) at Duke University.
+The team is comprised of the following team members.
 
 -   Team member 1: One sentence description of Team member 1 (e.g., year, major, etc.). Optionally, hyperlink the team name to homepage or social profile (LinkedIn, etc.) of team member.
 -   Team member 2: One sentence description of Team member 2 (e.g., year, major, etc.). Optionally, hyperlink the team name to homepage or social profile (LinkedIn, etc.) of team member.
