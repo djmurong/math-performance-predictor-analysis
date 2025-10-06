@@ -1,5 +1,6 @@
 ---
 title: Team contract
+author: "Srilakshmi Venkatesan, Sriya Sridhar, Ryan Lee, Daniel Murong"
 ---
 
 # Rationale
