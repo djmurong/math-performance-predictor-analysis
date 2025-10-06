@@ -23,11 +23,11 @@ All team members can refer to this document throughout the semester.
 
 -   What are your team goals for this project?
 
-Our team goals for this project are to work collaboratively, meet deadlines, and learn how to troubleshoot, create our own code, and develop analytical skills by working together. 
+Discuss as a team and add your response here.
 
 -   What do you want to accomplish? What skills do you want to develop or refine?
 
-We hope to accomplish creating a comprehensive statistical analysis portfolio of a dataset. We would like to develop our R coding skills, statistical analysis skills, and data analytic critical thinking. 
+Discuss as a team and add your response here.
 
 # Expectations
 
@@ -35,21 +35,21 @@ We hope to accomplish creating a comprehensive statistical analysis portfolio of
 
 -   Meeting times: Identify a 1 - 2 hour weekly block outside of lab where the team can meet to work on assignments. All team members should block off this time on their calendar in case the team needs to meet to work on the project. Note: If you are unable to find a weekly time when the team can meet, briefly outline a plan to work on assignments outside of lab.
 
-We plan to meet Saturdays at 9 am.
+Discuss as a team and add your response here.
 
 -   Meeting location: Identify how or where the team will meet to work together (e.g. in-person, Zoom, Facetime, Google Hangouts). Be sure every member is able to access the in-person and/or virtual meeting space.
 
- We plan to meet in Craven D common room. 
+Discuss as a team and add your response here.
 
 ## Communication
 
 -   Method of communication: Identify the team's primary method of communication outside of meetings (e.g. GroupMe, Slack, text messages, etc.). Be sure all members are able to access the team's chosen communication platform.
 
-We have created a text message groupchat. All communications will be via this text message groupchat. 
+Discuss as a team and add your response here.
 
 -   Notifying team members: How should someone notify the other members if they are unable to attend lab or a scheduled team meeting?
 
-Please notify team members via messages if you cannot make it. 
+Discuss as a team and add your response here.
 
 ## Workflow
 
@@ -57,40 +57,38 @@ While it's not productive to divvy up the entire project work at the beginning a
 
 -   By when should everyone have their portion of the work completed? *Keep in mind your team will want to have time to review each portion before turning it in to make sure all pieces make sense together and any writing is cohesive.*
 
-Everyone should have their portion completed by Sunday night so we can review it on Monday morning. 
+Discuss as a team and add your response here.
 
 -   How should team members communicate if they're struggling with the portion of the work assigned to them?
 
-Reach out via the messages groupchat and let us know what you are struggling with. 
+Discuss as a team and add your response here.
 
 # Policies & procedures
 
 What rules can you agree on to help you meet your goals and expectations?
 
-We believe that everyone should contribute equally, attend meetings as much as possible, be active listeners, and not fall behind on deadlines. 
+Discuss as a team and add your response here.
 
 # Consequences
 
 How will you address non-performance in regard to these goals, expectations, policies and procedures?
 
-We will talk to each other in the groupchat and reach out if things are not going well. 
+Discuss as a team and add your response here.
 
 # Additional items
 
 Use the remaining space for any other items the team would like to discuss or plan out.
 
-NA
+Discuss as a team and add your response here.
 
---------------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 We share these goals and expectations, and agree to these policies, procedures, and consequences.
 
-Team member name: Srilakshmi Venkatesan
+Team member name:
 
-Team member name: Ryan Lee
+Team member name:
 
-Team member name: Daniel Murong
-
-Team member name: Sriya Sridhar
+Team member name:
 
 ...
