@@ -23,9 +23,7 @@ library(tidyverse)
 -   Address ethical concerns about the data.
     If none are identified, state that explicitly.
 
-    The airlines dataset is from the CORGIS Dataset Project.
-    The data was originally collected by the Bureau of Transportation Statistics.
-    This dataset was curated by Austin Cory Bart. Each obsrvation is on an airport with variable     including the number of delays and cancellations of a given cause, such as meteorological        conditions. No ethical concerns are identified for this dataset.
+The airlines dataset is from the CORGIS Dataset Project. The data was originally collected by the Bureau of Transportation Statistics. This dataset was curated by Austin Cory Bart. Each obsrvation is on an airport with variable including the number of delays and cancellations of a given cause, such as meteorological conditions. No ethical concerns are identified for this dataset.
 
 -   A well formulated research question.
     (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
