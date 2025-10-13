@@ -14,18 +14,13 @@ library(tidyverse)
 
 ## Introduction and data
 
--   Identify the source of the data.
+The airlines dataset is from the CORGIS Dataset Project.
+The data was originally collected by the Bureau of Transportation Statistics.
+This dataset was curated by Austin Cory Bart.
+Each obsrvation is on an airport on a given date with variables including the number of delays and cancellations attributed to a certain event, such as meteorological conditions.
+No ethical concerns are identified for this dataset.
 
--   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
-
--   Write a brief description of the observations.
-
--   Address ethical concerns about the data.
-    If none are identified, state that explicitly.
-
-    The airlines dataset is from the CORGIS Dataset Project.
-    The data was originally collected by the Bureau of Transportation Statistics.
-    This dataset was curated by Austin Cory Bart. Each obsrvation is on an airport with variable     including the number of delays and cancellations of a given cause, such as meteorological        conditions. No ethical concerns are identified for this dataset.
+## Research question
 
 -   A well formulated research question.
     (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
@@ -48,7 +43,10 @@ library(tidyverse)
 
 ## Introduction and data
 
-The source of the data is the UC Irvine Machine Learning Repository. The data was collected through school reports and questionnaires by Cortez and Silva for a study published in April 2008. Each observation is collected from student and then describing their age, sex, address, job, health, etc. No ethical concerns stated regarding the data and none to be found. 
+The source of the data is the UC Irvine Machine Learning Repository.
+The data was collected through school reports and questionnaires by Cortez and Silva for a study published in April 2008.
+Each observation is collected from student and then describing their age, sex, address, job, health, etc.
+No ethical concerns stated regarding the data and none to be found.
 
 ## Research question
 
