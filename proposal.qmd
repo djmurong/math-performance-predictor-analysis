@@ -19,15 +19,23 @@ library(tidyverse)
 
 -   Write a brief description of the observations.
 
--   Address ethical concerns about the data. If none are identified, state that explicitly.
+-   Address ethical concerns about the data.
+    If none are identified, state that explicitly.
 
-## Research question
+    The airlines dataset is from the CORGIS Dataset Project.
+    The data was originally collected by the Bureau of Transportation Statistics.
+    This dataset was curated by Austin Cory Bart.
 
--   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
+<!-- -->
+
+-   A well formulated research question.
+    (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
--   Identify the types of variables in your research question. Categorical? Numerical?
+-   Identify the types of variables in your research question.
+    Categorical?
+    Numerical?
 
 ## Glimpse of data
 
@@ -47,15 +55,19 @@ library(tidyverse)
 
 -   Write a brief description of the observations.
 
--   Address ethical concerns about the data. If none are identified, state that explicitly.
+-   Address ethical concerns about the data.
+    If none are identified, state that explicitly.
 
 ## Research question
 
--   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
+-   A well formulated research question.
+    (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
--   Identify the types of variables in your research question. Categorical? Numerical?
+-   Identify the types of variables in your research question.
+    Categorical?
+    Numerical?
 
 ## Glimpse of data
 
