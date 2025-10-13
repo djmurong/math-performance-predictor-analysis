@@ -1,6 +1,7 @@
 ---
-title: Add project title here
+title: Data Analysis Project Proposal
 subtitle: Proposal
+author: "Srilakshmi Venkatesan, Sriya Sridhar, Ryan Lee, Daniel Murong"
 ---
 
 ```{r}
@@ -41,13 +42,7 @@ library(tidyverse)
 
 ## Introduction and data
 
--   Identify the source of the data.
-
--   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
-
--   Write a brief description of the observations.
-
--   Address ethical concerns about the data. If none are identified, state that explicitly.
+The source of the data is the UC Irvine Machine Learning Repository. The data was collected through school reports and questionnaires by Cortez and Silva for a study published in April 2008. Each observation is collected from student and then describing their age, sex, address, job, health, etc. No ethical concerns stated regarding the data and none to be found. 
 
 ## Research question
 
