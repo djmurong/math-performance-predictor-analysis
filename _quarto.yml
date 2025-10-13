@@ -5,15 +5,13 @@ project:
     - presentation.pdf
 
 author: # Replace with team member names
-  - name: Name of team member 1 
-  - name: Name of team member 2
-  - name: Name of team member 3
-  - name: Name of team member 4
-  - name: ...
+  - name: Srilakshmi Venkatesan
+  - name: Daniel Murong
+  - name: Sriya Sridhar
+  - name: Ryan Lee
 
 website:
-  # Replace with team name
-  title: Team name 
+  title: the-pipe-operators
   navbar:
     left:
       - text: Home
@@ -28,8 +26,7 @@ website:
         href: contract.qmd
     right:
       - icon: github
-        # Replace with link to GitHub repo
-        href: "https://github.com/sta199-f25/" 
+        href: "https://github.com/sta199-f25/project-the-pipe-operators.git" 
 
 format:
   html:
