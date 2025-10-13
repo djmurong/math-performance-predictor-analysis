@@ -1,7 +1,6 @@
 ---
 title: Data Analysis Project Proposal
 subtitle: Proposal
-author: "Srilakshmi Venkatesan, Sriya Sridhar, Ryan Lee, Daniel Murong"
 ---
 
 ```{r}
