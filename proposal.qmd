@@ -20,8 +20,7 @@ library(readxl)
 
   What is the trend of delays/cancellations throughout the year and what are common predictors of those?
 
-  The research topic focuses on how the number of delays/cancellations change throughout the year depending on the month.
-    In addition, it focuses on the causation behind the delays/cancellations.
+  The research topic focuses on how the number of delays/cancellations change throughout the year depending on the month. In addition, it focuses on the causation behind the delays/cancellations.
     We predict that delays/cancellations are greater around the winter months due to the weather, and around the holiday season due to the volume of travelers.
 
   The categorical variables in our research question are the predictors of cancellations, such as weather and year/month.
