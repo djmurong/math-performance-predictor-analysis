@@ -31,7 +31,7 @@ library(readxl)
 
 ```{r}
 #| label: load-data-1
-airlines <- read.csv("data/airlines.csv")
+airlines <- read_csv("data/airlines.csv")
 glimpse(airlines)
 ```
 
