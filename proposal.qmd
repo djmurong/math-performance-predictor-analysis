@@ -20,17 +20,12 @@ library(readxl)
 
   What is the trend of delays/cancellations throughout the year and what are common predictors of those?
 
-<<<<<<< HEAD
   The research topic focuses on how the number of delays/cancellations change throughout the year depending on the month.
   In addition, it focuses on the causation behind the delays/cancellations.
   
   We believe that understanding the trends in the number of delays/cancellations and the most prominent causes of them will help airports reduce the number of cancellations by preparing for seasons with higher numbers of delays/cancellations and by targeting the most imperative causes.
   
   We predict that delays/cancellations are greater around the winter months due to the weather, and around the holiday season due to the volume of travelers.
-=======
-  The research topic focuses on how the number of delays/cancellations change throughout the year depending on the month. In addition, it focuses on the causation behind the delays/cancellations.
-    We predict that delays/cancellations are greater around the winter months due to the weather, and around the holiday season due to the volume of travelers.
->>>>>>> 7942995f2f2587b84745f3651b6e321bf5549383
 
   The categorical variables in our research question are the predictors of cancellations, such as weather and year/month.
     The numerical variables in our research question are the number of delays due to factors such as weather or security.
