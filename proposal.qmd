@@ -39,7 +39,7 @@ glimpse(airlines)
 
 ## Introduction and data
 
-  The source of the data is the UC Irvine Machine Learning Repository. The data was collected through school reports and questionnaires by Cortez and Silva for a study published in April 2008. Each observation is collected from student and then describing their age, sex, address, job, health, etc. No ethical concerns stated regarding the data and none to be found.
+  The source of the data is the UC Irvine Machine Learning Repository. The data was collected through school reports and questionnaires by Cortez and Silva for a study published in April 2008. Each observation is collected from student and then describing their age, sex, address, job, health, etc. No ethical concerns stated explicitly in the dataset. However, some ethical concerns to consider include that many of the variables contain personal information and there are personal identifiers that could be used to trace back to specific people. For instance, it collects information about where they live, parental status, age, sex, address, job, and where they live which could be used to deduce who the people are. Furthermore, correlational findings are not causal. Their may also be bias since it was only studied in two schools of certain demographics and therefore features could disadvantage certain minority groups who are not as present in the dataset.
 
 ## Research question
     
