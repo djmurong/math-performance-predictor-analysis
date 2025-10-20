@@ -7,13 +7,14 @@ subtitle: Proposal
 #| label: load-pkgs
 #| message: false
 library(tidyverse)
+library(readxl)
 ```
 
 # Data 1
 
 ## Introduction and data
-    
-  The airlines dataset is from the CORGIS Dataset Project. The data was originally collected by the Bureau of Transportation Statistics. This dataset was curated by Austin Cory Bart. Each observation is on an airport with variable including the number of delays and cancellations of a given cause, such as meteorological conditions. No ethical concerns are identified for this dataset.
+
+  The airlines dataset is from the CORGIS Dataset Project. The data was originally collected by the Bureau of Transportation Statistics. This dataset was curated by Austin Cory Bart. Each observation is on an airport on a given date with variables including the number of delays and cancellations attributed to a certain event, such as meteorological conditions. No ethical concerns are identified for this dataset.
 
 ## Research question
 
@@ -30,18 +31,15 @@ library(tidyverse)
 
 ```{r}
 #| label: load-data-1
-
-# add code here
+airlines <- read.csv("data/airlines.csv")
+glimpse(airlines)
 ```
 
 # Data 2
 
 ## Introduction and data
 
-The source of the data is the UC Irvine Machine Learning Repository.
-The data was collected through school reports and questionnaires by Cortez and Silva for a study published in April 2008.
-Each observation is collected from student and then describing their age, sex, address, job, health, etc.
-No ethical concerns stated regarding the data and none to be found.
+  The source of the data is the UC Irvine Machine Learning Repository. The data was collected through school reports and questionnaires by Cortez and Silva for a study published in April 2008. Each observation is collected from student and then describing their age, sex, address, job, health, etc. No ethical concerns stated regarding the data and none to be found.
 
 ## Research question
     
@@ -55,6 +53,9 @@ No ethical concerns stated regarding the data and none to be found.
 
 ```{r}
 #| label: load-data-2
-
-# add code here
+edu_achievement <- read_excel(
+  "data/educationachievement.xlsx",
+  skip = 1
+)
+glimpse(edu_achievement)
 ```
