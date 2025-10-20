@@ -20,12 +20,17 @@ library(readxl)
 
   What is the trend of delays/cancellations throughout the year and what are common predictors of those?
 
+<<<<<<< HEAD
   The research topic focuses on how the number of delays/cancellations change throughout the year depending on the month.
   In addition, it focuses on the causation behind the delays/cancellations.
   
   We believe that understanding the trends in the number of delays/cancellations and the most prominent causes of them will help airports reduce the number of cancellations by preparing for seasons with higher numbers of delays/cancellations and by targeting the most imperative causes.
   
   We predict that delays/cancellations are greater around the winter months due to the weather, and around the holiday season due to the volume of travelers.
+=======
+  The research topic focuses on how the number of delays/cancellations change throughout the year depending on the month. In addition, it focuses on the causation behind the delays/cancellations.
+    We predict that delays/cancellations are greater around the winter months due to the weather, and around the holiday season due to the volume of travelers.
+>>>>>>> 7942995f2f2587b84745f3651b6e321bf5549383
 
   The categorical variables in our research question are the predictors of cancellations, such as weather and year/month.
     The numerical variables in our research question are the number of delays due to factors such as weather or security.
@@ -42,7 +47,7 @@ glimpse(airlines)
 
 ## Introduction and data
 
-  The source of the data is the UC Irvine Machine Learning Repository. The data was collected through school reports and questionnaires by Cortez and Silva for a study published in April 2008. Each observation is collected from student and then describing their age, sex, address, job, health, etc. No ethical concerns stated regarding the data and none to be found.
+  The source of the data is the UC Irvine Machine Learning Repository. The data was collected through school reports and questionnaires by Cortez and Silva for a study published in April 2008. Each observation is collected from student and then describing their age, sex, address, job, health, etc. No ethical concerns stated explicitly in the dataset. However, some ethical concerns to consider include that many of the variables contain personal information and there are personal identifiers that could be used to trace back to specific people. For instance, it collects information about where they live, parental status, age, sex, address, job, and where they live which could be used to deduce who the people are. Furthermore, correlational findings are not causal. Their may also be bias since it was only studied in two schools of certain demographics and therefore features could disadvantage certain minority groups who are not as present in the dataset.
 
 ## Research question
     
