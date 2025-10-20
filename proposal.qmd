@@ -12,18 +12,18 @@ library(tidyverse)
 # Data 1
 
 ## Introduction and data
-
-The airlines dataset is from the CORGIS Dataset Project. The data was originally collected by the Bureau of Transportation Statistics. This dataset was curated by Austin Cory Bart. Each observation is on an airport with variable including the number of delays and cancellations of a given cause, such as meteorological conditions. No ethical concerns are identified for this dataset.
+    
+  The airlines dataset is from the CORGIS Dataset Project. The data was originally collected by the Bureau of Transportation Statistics. This dataset was curated by Austin Cory Bart. Each observation is on an airport with variable including the number of delays and cancellations of a given cause, such as meteorological conditions. No ethical concerns are identified for this dataset.
 
 ## Research question
 
-    What is the trend of delays/cancellations throughout the year and what are common predictors of those?
+  What is the trend of delays/cancellations throughout the year and what are common predictors of those?
 
-    The research topic focuses on how the number of delays/cancellations change throughout the year depending on the month.
+  The research topic focuses on how the number of delays/cancellations change throughout the year depending on the month.
     In addition, it focuses on the causation behind the delays/cancellations.
     We predict that delays/cancellations are greater around the winter months due to the weather, and around the holiday season due to the volume of travelers.
 
-    The categorical variables in our research question are the predictors of cancellations, such as weather and year/month.
+  The categorical variables in our research question are the predictors of cancellations, such as weather and year/month.
     The numerical variables in our research question are the number of delays due to factors such as weather or security.
 
 ## Glimpse of data
@@ -44,12 +44,12 @@ Each observation is collected from student and then describing their age, sex, a
 No ethical concerns stated regarding the data and none to be found.
 
 ## Research question
-
-Do demographical factors such as age, sex, home, parental status, and parental education impact student performance in math in the Portugueuse schools of Gabriel Pereira and Mousinho da Silveira? Or are factors such as study time, school travel time, educational support, and paid class time more influential?
-
-The research topic is what topics are most influential in educational performance on math, home characteristics or study time and study resources. There may be some overlap between the two, as certain factors may lead to more or less study time. Therefore, we also want to explore the relationship between the two. Our hypothesis is that study time and educational support are more influential n mathematic educational performance. 
-
-The types of variable present include numerical variables such as age, study time, school travel time, paid class versus categorical and binary variables in parental status, home, sex, parental education, and educational support. 
+    
+  Do demographical factors such as age, sex, home, parental status, and parental education impact student performance in math in the Portugueuse schools of Gabriel Pereira and Mousinho da Silveira? Or are factors such as study time, school travel time, educational support, and paid class time more influential?
+    
+  The research topic is what topics are most influential in educational performance on math, home characteristics or study time and study resources. There may be some overlap between the two, as certain factors may lead to more or less study time. Therefore, we also want to explore the relationship between the two. Our hypothesis is that study time and educational support are more influential in mathematic educational performance.
+    
+  The types of variable present include numerical variables such as age, study time, school travel time, paid class versus categorical and binary variables in parental status, home, sex, parental education, and educational support.
 
 ## Glimpse of data
 
