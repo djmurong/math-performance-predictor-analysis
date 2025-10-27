@@ -6,18 +6,10 @@ author: "Srilakshmi Venkatesan, Sriya Sridhar, Ryan Lee, Daniel Murong"
 This project was developed by **the-pipe-operators** For [STA 199: Introduction to Data Science](https://sta199-f25.github.io/) at Duke University.
 The team is comprised of the following team members.
 
-<<<<<<< HEAD
 -   Sriya: Sriya Sridhar is a sophomore majoring in neuroscience. 
 
 -   Srilakshmi: Srilakshmi Venkatesan is a sophomore majoring in neuroscience. 
 
 -   Daniel: Daniel Murong is a sophomore majoring in computer science. 
 
--   Ryan: Ryan Lee is a sophomore majoring in biology. 
-
-=======
--   Sriya Sridhar is a sophomore majoring in neuroscience.
--   Srilakshmi Venkatesan is a sophomore majoring in neuroscience.
--   Daniel Murong is a sophomore majoring in computer science.
--   Ryan Lee is a sophomore majoring in biology.
->>>>>>> d5890aca1783b7a261ae114e4d481d3bee99ddbe
+-   Ryan: Ryan Lee is a sophomore majoring in biology.
