@@ -20,10 +20,13 @@ website:
         href: presentation.pdf  
       - text: Proposal
         href: proposal.qmd
+      - text: EDA
+        href: eda.qmd
       - text: About
         href: about.qmd
       - text: Contract
         href: contract.qmd
+
     right:
       - icon: github
         href: "https://github.com/sta199-f25/project-the-pipe-operators.git" 

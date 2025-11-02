@@ -1,6 +1,5 @@
 ---
 title: Meet the team
-author: "Srilakshmi Venkatesan, Sriya Sridhar, Ryan Lee, Daniel Murong"
 ---
 
 This project was developed by **the-pipe-operators** For [STA 199: Introduction to Data Science](https://sta199-f25.github.io/) at Duke University.
