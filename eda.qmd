@@ -56,11 +56,16 @@ Gabriel Pereira and Mousinho da Silveira"
 ```
 
 ```{r}
-#| label: paid-g3-plot
-#| message: false
-
-ggplot(edu_achievement, aes(x = paid, y = G3)) +
-  geom_boxplot()
+#| label: internet-g3-plot
+ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(
+    title = "Distribution of Final Grades (G3) by Internet Access",
+    x = "Internet Access",
+    y = "Final Grade (G3)"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none")
 
 ```
 
