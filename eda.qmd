@@ -69,3 +69,11 @@ ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
 
 ```
 
+
+```{r}
+#| label: paid-g3-plot
+#| message: false
+ggplot(edu_achievement, aes(x = paid, y = G3)) +
+  geom_boxplot()
+```
+
