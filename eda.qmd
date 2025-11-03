@@ -29,7 +29,7 @@ edu_achievement_longer <- edu_achievement |>
 ```
 
 ```{r}
-#| label: g3-failures-scatterplot
+#| label: g3-failures-plot
 ggplot(edu_achievement, aes(x = failures, y = G3, group = failures, color = failures)) +
   geom_boxplot() +
   labs(
