@@ -68,4 +68,16 @@ ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
   theme(legend.position = "none")
 
 ```
+```{r}
+#| label: health-g3-plot
+ggplot(edu_achievement, aes(x = health, y = G3)) +
+  geom_point(alpha = 0.6) +
+  geom_smooth(method = "lm") +
+  labs(
+    title = "Relationship Between Health Status and Final Grade (G3)",
+    x = "Health Status (1 = Poor, 5 = Excellent)",
+    y = "Final Grade (G3)"
+  ) +
+  theme_minimal(base_size = 14)
+```
 
