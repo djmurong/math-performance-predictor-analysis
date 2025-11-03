@@ -1,15 +1,16 @@
 ---
-title: Add project title here
+title: Determining Key Factors Influencing Student Math Performance in Portuguese Secondary Education
 subtitle: Report
 execute:
   echo: true
 ---
 
-Add 1-3 sentence project abstract here.
+This project will analyze data from the Portugueuse schools, Gabriel Pereira and Mousinho da Silveira, to determine which factors most strongly influence students' academic performance in mathematics. By comparing demographical variables, such as parent education level and quality of family relationships, with academic variables, such as number of past class failures and extra paid classes, the research will seek to identify key predictors of student success.
 
 ## Introduction
 
-Add introduction section here.
+In the early 2000s, Portugal's education was been falling behind the rest of Europe, evidenced by its high student failure rates. In April 2008, Paulo Cortez and Alice Silva published a study analyzing student achievement in secondary education of two Portuguese schools. The data was collected through school reports and questionnaires, describing students' age, sex, address, job, health, etc. Though no ethical conerns are explicity stated in the dataset, some variables are personal identifiers that could be used to trace back to specific people. For instance, parental status, age, sex, and home type could be used to deduce who the people are. The data is currently pubicly stored in the UC Irvine Machine Learning Repository. To better understand what attributed to Portugal's shortcomings in education, the following research seeks to understand which demographic factors and academic factors are most correlated to academic success?
+
 
 ## Data
 
