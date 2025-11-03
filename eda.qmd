@@ -2,3 +2,31 @@
 title: "EDA"
 ---
 
+```{r}
+#| label: load-packages
+library(tidyverse)
+library(tidymodels)
+library(readxl)
+```
+
+```{r}
+#| label: load-data
+edu_achievement <- read_excel(
+  "data/educationachievement.xlsx",
+  skip = 1
+)
+glimpse(edu_achievement)
+```
+
+```{r}
+#| label: g3-failures-scatterplot
+ggplot(edu_achievement, aes(x = failures, y=G3)) +
+  geom_point()
+```
+
+```{r}
+#| label: wacl-dalc-g3-plot
+#| error: false
+ggplot(edu_achievement, aes(x = ))
+```
+
