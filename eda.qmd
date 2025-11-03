@@ -55,3 +55,12 @@ Gabriel Pereira and Mousinho da Silveira"
   )
 ```
 
+```{r}
+#| label: paid-g3-plot
+#| message: false
+
+ggplot(edu_achievement, aes(x = paid, y = G3)) +
+  geom_point()
+
+```
+
