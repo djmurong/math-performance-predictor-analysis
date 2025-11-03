@@ -81,3 +81,11 @@ ggplot(edu_achievement, aes(x = health, y = G3)) +
   theme_minimal(base_size = 14)
 ```
 
+
+```{r}
+#| label: paid-g3-plot
+#| message: false
+ggplot(edu_achievement, aes(x = paid, y = G3)) +
+  geom_boxplot()
+```
+
