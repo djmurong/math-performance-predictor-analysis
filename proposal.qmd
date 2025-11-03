@@ -48,7 +48,7 @@ glimpse(airlines)
     
   Do demographical factors such as age, sex, home, parental status, and parental education impact student performance in math in the Portugueuse schools of Gabriel Pereira and Mousinho da Silveira? Or are factors such as study time, school travel time, educational support, and paid class time more influential?
     
-  The research topic is what topics are most influential in educational performance on math, home characteristics or study time and study resources. There may be some overlap between the two, as certain factors may lead to more or less study time. Therefore, we also want to explore the relationship between the two. Our hypothesis is that study time and educational support are more influential in mathematic educational performance.
+  The research topic is what topics are most influential in educational performance on math, home characteristics or study time and study resources. There may be some overlap between the two, as certain factors may lead to more or less study time. Therefore, we also want to explore the relationship between the two. Our hypothesis is that study time and educational support are more influential in mathematic educational performance. The response variable will be G3 and we plan to use a regression model to make our approach reproducible. 
     
   The types of variable present include numerical variables such as age, study time, school travel time, paid class versus categorical and binary variables in parental status, home, sex, parental education, and educational support. 
 
