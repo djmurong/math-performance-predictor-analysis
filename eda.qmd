@@ -77,3 +77,11 @@ ggplot(edu_achievement, aes(x = paid, y = G3)) +
   geom_boxplot()
 ```
 
+
+```{r}
+#| label: freetime-g3-plot
+#| message: false
+ggplot(edu_achievement, aes(x = freetime, y = G3)) +
+  geom_point()
+```
+
