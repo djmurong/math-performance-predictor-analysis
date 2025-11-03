@@ -60,3 +60,58 @@ ggplot(aes(x = alc_lvl, y = G3, group = alc_lvl, color = alc_lvl)) +
   theme(legend.position = "none")
 ```
 
+```{r}
+#| label: medu-g3-plot
+ggplot(edu_achievement, aes(x = Medu, y = G3)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  labs(
+    x = "Mother’s Education Level",
+    y = "Final Grade (1-20)",
+    title = "Final Grade of Students Based on Mother’s Education Level",
+    subtitle = "Student Serformance in Math in the Portugueuse schools of 
+Gabriel Pereira and Mousinho da Silveira"
+  )
+
+ggplot(edu_achievement, aes(x = Fedu, y = G3)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  labs(
+    x = "Father’s Education Level",
+    y = "Final Grade (1-20)",
+    title = "Final Grade of Students Based on Father’s Education Level",
+    subtitle = "Student Serformance in Math in the Portugueuse schools of 
+Gabriel Pereira and Mousinho da Silveira"
+  )
+```
+
+```{r}
+#| label: internet-g3-plot
+ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
+  geom_boxplot(alpha = 0.7) +
+  labs(
+    title = "Distribution of Final Grades (G3) by Internet Access",
+    x = "Internet Access",
+    y = "Final Grade (G3)"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none")
+
+```
+
+
+```{r}
+#| label: paid-g3-plot
+#| message: false
+ggplot(edu_achievement, aes(x = paid, y = G3)) +
+  geom_boxplot()
+```
+
+
+```{r}
+#| label: freetime-g3-plot
+#| message: false
+ggplot(edu_achievement, aes(x = freetime, y = G3)) +
+  geom_point()
+```
+
