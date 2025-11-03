@@ -19,14 +19,44 @@ glimpse(edu_achievement)
 ```
 
 ```{r}
+#| label: pivot-longer
+edu_achievement_longer <- edu_achievement |>
+  pivot_longer(
+    cols = c("Dalc", "Walc"),
+    names_to = "alc_type",
+    values_to = "alc_lvl"
+  )
+```
+
+```{r}
 #| label: g3-failures-scatterplot
-ggplot(edu_achievement, aes(x = failures, y=G3)) +
-  geom_point()
+ggplot(edu_achievement, aes(x = failures, y = G3, group = failures, color = failures)) +
+  geom_boxplot() +
+  labs(
+    title = "Final Grade vs Number of Past Class Failures",
+    x = "Number of Past Class Failures",
+    y = "Final Grade"
+  ) +
+  theme(legend.position = "none")
 ```
 
 ```{r}
 #| label: wacl-dalc-g3-plot
-#| error: false
-ggplot(edu_achievement, aes(x = ))
+new_labels <- c("Dalc" = "Weekday", "Walc" = "Weekend")
+
+edu_achievement_longer |>
+  mutate(
+    alc_type = fct_relevel(alc_type, c("Dalc", "Walc"))
+  ) |>
+ggplot(aes(x = alc_lvl, y = G3, group = alc_lvl, color = alc_lvl)) +
+  geom_boxplot() +
+  facet_grid(rows = vars(alc_type), labeller = labeller(.rows = new_labels)) +
+  labs(
+    title = "Final Grade vs Alcoholic Consumption Level",
+    subtitle = "Separated by Weekday and Weekend",
+    x = "Alcoholic Consumption Level",
+    y = "Final Grade"
+  ) +
+  theme(legend.position = "none")
 ```
 
