@@ -60,7 +60,7 @@ Gabriel Pereira and Mousinho da Silveira"
 #| message: false
 
 ggplot(edu_achievement, aes(x = paid, y = G3)) +
-  geom_point()
+  geom_boxplot()
 
 ```
 
