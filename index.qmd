@@ -1,15 +1,18 @@
 ---
 title: Determining Key Factors Influencing Student Math Performance in Portuguese Secondary Education
 subtitle: Report
+bibliography: references.bib
 execute:
   echo: true
+  message: true
+  warning: true
 ---
 
 This project will analyze data from the Portuguese schools, Gabriel Pereira and Mousinho da Silveira, to determine which factors most strongly influence students' academic performance in mathematics. By comparing demographic variables, such as parent education level and quality of family relationships, with academic variables, such as number of past class failures and extra paid classes, the research will seek to identify key predictors of student success.
 
 ## Introduction
 
-In the early 2000s, Portugal's education was falling behind the rest of Europe, evidenced by its high student failure rates. In April 2008, Paulo Cortez and Alice Silva published a study analyzing student achievement in the secondary education of two Portuguese schools. The data were collected through school reports and questionnaires that included information such as students' age, sex, address, job, and health. Though no ethical concerns are explicitly stated in the dataset, some variables are personal identifiers that could be used to trace back to specific people. For instance, parental status, age, sex, and home type could potentially reveal individuals’ identities. The data are currently publicly stored in the UC Irvine Machine Learning Repository. To better understand what contributed to Portugal's shortcomings in education, the following research seeks to understand which demographic and academic factors most correlate with academic success.
+In the early 2000s, Portugal's education was falling behind the rest of Europe, evidenced by its high student failure rates. In April 2008, Paulo Cortez and Alice Silva published a study analyzing student achievement in the secondary education of two Portuguese schools. The data were collected through school reports and questionnaires that included information such as students' age, sex, address, job, and health. Though no ethical concerns are explicitly stated in the dataset, some variables are personal identifiers that could be used to trace back to specific people. For instance, parental status, age, sex, and home type could potentially reveal individuals’ identities. The data are currently publicly stored in the UC Irvine Machine Learning Repository [see @cortezSilva2008]. To better understand what contributed to Portugal's shortcomings in education, the following research seeks to understand which demographic and academic factors most correlate with academic success.
 
 
 ## Data

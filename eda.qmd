@@ -1,5 +1,7 @@
 ---
 title: "EDA"
+fig-width: 8
+fig-asp: 0.618
 ---
 
 ```{r}
@@ -28,8 +30,10 @@ edu_achievement_longer <- edu_achievement |>
   )
 ```
 
+@fig-g3-failures-plot highlights differences in medians of students' final grades across the number of past class fails they have.
 ```{r}
-#| label: g3-failures-plot
+#| label: fig-g3-failures-plot
+#| fig-cap: Final Grade vs. Number of Past Class Failures
 ggplot(edu_achievement, aes(x = failures, y = G3, group = failures, color = failures)) +
   geom_boxplot() +
   labs(
