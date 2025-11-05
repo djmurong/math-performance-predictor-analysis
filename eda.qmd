@@ -30,9 +30,9 @@ edu_achievement_longer <- edu_achievement |>
   )
 ```
 
-@fig-g3-failures-plot highlights differences in medians of students' final grades across the number of past class fails they have.
+@fig-g3-failures highlights differences in medians of students' final grades across the number of past class fails they have.
 ```{r}
-#| label: fig-g3-failures-plot
+#| label: fig-g3-failures
 #| fig-cap: Final Grade vs. Number of Past Class Failures
 ggplot(edu_achievement, aes(x = failures, y = G3, group = failures, color = failures)) +
   geom_boxplot() +
@@ -45,7 +45,7 @@ ggplot(edu_achievement, aes(x = failures, y = G3, group = failures, color = fail
 ```
 
 ```{r}
-#| label: wacl-dalc-g3-plot
+#| label: fig-wacl-dalc-g3
 new_labels <- c("Dalc" = "Weekday", "Walc" = "Weekend")
 
 edu_achievement_longer |>
@@ -65,7 +65,7 @@ ggplot(aes(x = alc_lvl, y = G3, group = alc_lvl, color = alc_lvl)) +
 ```
 
 ```{r}
-#| label: medu-g3-plot
+#| label: fig-medu-g3
 ggplot(edu_achievement, aes(x = Medu, y = G3)) + 
   geom_point() + 
   geom_smooth(method = "lm") + 
@@ -90,7 +90,7 @@ Gabriel Pereira and Mousinho da Silveira"
 ```
 
 ```{r}
-#| label: internet-g3-plot
+#| label: fig-internet-g3
 ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
   geom_boxplot(alpha = 0.7) +
   labs(
@@ -105,7 +105,7 @@ ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
 
 
 ```{r}
-#| label: paid-g3-plot
+#| label: fig-paid-g3
 #| message: false
 ggplot(edu_achievement, aes(x = paid, y = G3)) +
   geom_boxplot()
@@ -113,7 +113,7 @@ ggplot(edu_achievement, aes(x = paid, y = G3)) +
 
 
 ```{r}
-#| label: freetime-g3-plot
+#| label: fig-freetime-g3
 #| message: false
 ggplot(edu_achievement, aes(x = freetime, y = G3)) +
   geom_point()
