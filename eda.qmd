@@ -66,6 +66,7 @@ ggplot(aes(x = alc_lvl, y = G3, group = alc_lvl, color = alc_lvl)) +
 
 ```{r}
 #| label: fig-medu-g3
+#| layout-nrow: 2
 ggplot(edu_achievement, aes(x = Medu, y = G3)) + 
   geom_point() + 
   geom_smooth(method = "lm") + 
@@ -117,5 +118,77 @@ ggplot(edu_achievement, aes(x = paid, y = G3)) +
 #| message: false
 ggplot(edu_achievement, aes(x = freetime, y = G3)) +
   geom_point()
+```
+
+```{r}
+#| label: dem-vars-model-fit
+dem_vars = c(
+  "school",
+  "sex",
+  "age",
+  "address",
+  "famsize",
+  "Pstatus",
+  "Medu",
+  "Fedu",
+  "Mjob",
+  "Fjob",
+  "reason",
+  "guardian"
+)
+formula_str_dem <- paste("G3 ~", paste(dem_vars, collapse = " + "))
+rec_dem <- recipe(as.formula(formula_str_dem), data = edu_achievement)
+
+dem_model <- linear_reg()
+
+wf_dem <- workflow() %>%
+  add_recipe(rec_dem) %>%
+  add_model(dem_model)
+
+dem_model <- fit(wf_dem, data = edu_achievement)
+
+tidy(dem_model)
+```
+
+```{r}
+#|label: study-vars-model-fit
+study_vars = c(
+  "studytime",
+  "failures",
+  "schoolsup",
+  "famsup",
+  "paid",
+  "activities",
+  "nursery",
+  "higher",
+  "internet",
+  "romantic",
+  "famrel",
+  "freetime",
+  "goout",
+  "Dalc",
+  "Walc",
+  "health",
+  "absences"
+)
+formula_str_study <- paste("G3 ~", paste(study_vars, collapse = " + "))
+rec_study <- recipe(as.formula(formula_str_study), data = edu_achievement)
+
+study_model <- linear_reg()
+
+wf_study <- workflow() %>%
+  add_recipe(rec_study) %>%
+  add_model(study_model)
+
+study_model <- fit(wf_study, data = edu_achievement)
+
+tidy(study_model)
+```
+
+```{r}
+#| label: glance
+glance(dem_model)
+
+glance(study_model)
 ```
 
