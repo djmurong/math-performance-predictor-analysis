@@ -53,11 +53,11 @@
 -   `internet`: Internet access at home (yes/no).
 -   `romantic`: In a romantic relationship (yes/no).
 -   `famrel`: Quality of family relationships (1 = very bad to 5 = excellent).
--   `freetime`: Free time after school (1–5).
--   `goout`: Going out with friends (1–5).
--   `Dalc`: Workday alcohol consumption (1–5).
--   `Walc`: Weekend alcohol consumption (1–5).
--   `health`: Current health status (1–5).
+-   `freetime`: Free time after school (1–5 scale).
+-   `goout`: Going out with friends (1–5 scale).
+-   `Dalc`: Workday alcohol consumption (1–5 scale).
+-   `Walc`: Weekend alcohol consumption (1–5 scale).
+-   `health`: Current health status (1–5 scale).
 -   `absences`: Number of school absences (numeric).
 -   `G1`: First-period grade (numeric: 0–20).
 -   `G2`: Second-period grade (numeric: 0–20).
