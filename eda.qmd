@@ -1,5 +1,7 @@
 ---
 title: "EDA"
+fig-width: 8
+fig-asp: 0.618
 ---
 
 ```{r}
@@ -19,19 +21,52 @@ glimpse(edu_achievement)
 ```
 
 ```{r}
-#| label: g3-failures-scatterplot
-ggplot(edu_achievement, aes(x = failures, y=G3)) +
-  geom_point()
+#| label: pivot-longer
+edu_achievement_longer <- edu_achievement |>
+  pivot_longer(
+    cols = c("Dalc", "Walc"),
+    names_to = "alc_type",
+    values_to = "alc_lvl"
+  )
+```
+
+@fig-g3-failures highlights differences in medians of students' final grades across the number of past class fails they have.
+```{r}
+#| label: fig-g3-failures
+#| fig-cap: Final Grade vs. Number of Past Class Failures
+ggplot(edu_achievement, aes(x = failures, y = G3, group = failures, color = failures)) +
+  geom_boxplot() +
+  labs(
+    title = "Final Grade vs Number of Past Class Failures",
+    x = "Number of Past Class Failures",
+    y = "Final Grade"
+  ) +
+  theme(legend.position = "none")
 ```
 
 ```{r}
-#| label: wacl-dalc-g3-plot
-#| error: false
-ggplot(edu_achievement, aes(x = ))
+#| label: fig-wacl-dalc-g3
+new_labels <- c("Dalc" = "Weekday", "Walc" = "Weekend")
+
+edu_achievement_longer |>
+  mutate(
+    alc_type = fct_relevel(alc_type, c("Dalc", "Walc"))
+  ) |>
+ggplot(aes(x = alc_lvl, y = G3, group = alc_lvl, color = alc_lvl)) +
+  geom_boxplot() +
+  facet_grid(rows = vars(alc_type), labeller = labeller(.rows = new_labels)) +
+  labs(
+    title = "Final Grade vs Alcoholic Consumption Level",
+    subtitle = "Separated by Weekday and Weekend",
+    x = "Alcoholic Consumption Level",
+    y = "Final Grade"
+  ) +
+  theme(legend.position = "none")
 ```
 
 ```{r}
-#| label: medu-g3-plot
+#| label: fig-medu-g3
+#| layout-nrow: 2
 ggplot(edu_achievement, aes(x = Medu, y = G3)) + 
   geom_point() + 
   geom_smooth(method = "lm") + 
@@ -56,7 +91,7 @@ Gabriel Pereira and Mousinho da Silveira"
 ```
 
 ```{r}
-#| label: internet-g3-plot
+#| label: fig-internet-g3
 ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
   geom_boxplot(alpha = 0.7) +
   labs(
@@ -83,9 +118,89 @@ ggplot(edu_achievement, aes(x = health, y = G3)) +
 
 
 ```{r}
-#| label: paid-g3-plot
+#| label: fig-paid-g3
 #| message: false
 ggplot(edu_achievement, aes(x = paid, y = G3)) +
   geom_boxplot()
+```
+
+
+```{r}
+#| label: fig-freetime-g3
+#| message: false
+ggplot(edu_achievement, aes(x = freetime, y = G3)) +
+  geom_point()
+```
+
+```{r}
+#| label: dem-vars-model-fit
+dem_vars = c(
+  "school",
+  "sex",
+  "age",
+  "address",
+  "famsize",
+  "Pstatus",
+  "Medu",
+  "Fedu",
+  "Mjob",
+  "Fjob",
+  "reason",
+  "guardian"
+)
+formula_str_dem <- paste("G3 ~", paste(dem_vars, collapse = " + "))
+rec_dem <- recipe(as.formula(formula_str_dem), data = edu_achievement)
+
+dem_model <- linear_reg()
+
+wf_dem <- workflow() %>%
+  add_recipe(rec_dem) %>%
+  add_model(dem_model)
+
+dem_model <- fit(wf_dem, data = edu_achievement)
+
+tidy(dem_model)
+```
+
+```{r}
+#|label: study-vars-model-fit
+study_vars = c(
+  "studytime",
+  "failures",
+  "schoolsup",
+  "famsup",
+  "paid",
+  "activities",
+  "nursery",
+  "higher",
+  "internet",
+  "romantic",
+  "famrel",
+  "freetime",
+  "goout",
+  "Dalc",
+  "Walc",
+  "health",
+  "absences"
+)
+formula_str_study <- paste("G3 ~", paste(study_vars, collapse = " + "))
+rec_study <- recipe(as.formula(formula_str_study), data = edu_achievement)
+
+study_model <- linear_reg()
+
+wf_study <- workflow() %>%
+  add_recipe(rec_study) %>%
+  add_model(study_model)
+
+study_model <- fit(wf_study, data = edu_achievement)
+
+tidy(study_model)
+```
+
+```{r}
+#| label: glance
+glance(dem_model)
+
+glance(study_model)
 ```
 
