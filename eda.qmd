@@ -165,8 +165,8 @@ rec_dem <- recipe(as.formula(formula_str_dem), data = edu_achievement)
 
 dem_model <- linear_reg()
 
-wf_dem <- workflow() %>%
-  add_recipe(rec_dem) %>%
+wf_dem <- workflow() |>
+  add_recipe(rec_dem) |>
   add_model(dem_model)
 
 dem_model <- fit(wf_dem, data = edu_achievement)
@@ -200,8 +200,8 @@ rec_study <- recipe(as.formula(formula_str_study), data = edu_achievement)
 
 study_model <- linear_reg()
 
-wf_study <- workflow() %>%
-  add_recipe(rec_study) %>%
+wf_study <- workflow() |>
+  add_recipe(rec_study) |>
   add_model(study_model)
 
 study_model <- fit(wf_study, data = edu_achievement)
@@ -216,3 +216,55 @@ glance(dem_model)
 glance(study_model)
 ```
 
+We observe from the p-values of the variables in the two models, that several of them are not statistically significant for fitting. We will examine new models with variables having p-values lower than 0.05 (5e-2).
+
+```{r}
+#| label: reduced-dem-model
+dem_vars_reduced = c(
+  "sex",
+  "age",
+  "reason"
+)
+formula_str_dem_reduced <- paste("G3 ~", paste(dem_vars_reduced, collapse = " + "))
+rec_dem_reduced <- recipe(as.formula(formula_str_dem_reduced), data = edu_achievement)
+
+dem_model_reduced <- linear_reg()
+
+wf_dem_reduced <- workflow() |>
+  add_recipe(rec_dem_reduced) |>
+  add_model(dem_model_reduced)
+
+dem_model_reduced <- fit(wf_dem_reduced, data = edu_achievement)
+
+tidy(dem_model_reduced)
+```
+
+```{r}
+#| label: reduced-study-model
+study_vars_reduced = c(
+  "failures",
+  "romantic",
+  "goout"
+)
+formula_str_study_reduced <- paste("G3 ~", paste(study_vars_reduced, collapse = " + "))
+rec_study_reduced <- recipe(as.formula(formula_str_study_reduced), data = edu_achievement)
+
+study_model_reduced <- linear_reg()
+
+wf_study_reduced <- workflow() |>
+  add_recipe(rec_study_reduced) |>
+  add_model(study_model_reduced)
+
+study_model_reduced <- fit(wf_study_reduced, data = edu_achievement)
+
+tidy(study_model_reduced)
+```
+
+```{r}
+#| label: glance-reduced
+glance(dem_model_reduced)
+
+glance(study_model_reduced)
+```
+
+Based on the results of the multiple regression models, there does not appear to be any strong predictor of educational performance.
