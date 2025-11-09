@@ -33,6 +33,4 @@ website:
 
 format:
   html:
-    theme:
-      light: journal
-      dark: sketchy
+    theme: journal
