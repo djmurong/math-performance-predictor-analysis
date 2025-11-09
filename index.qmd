@@ -27,4 +27,8 @@ Add analysis section here.
 
 ## Discussion
 
-Add discussion section here.
+Conclusions:
+Limitations:
+- The data we analyzed were limited to math performance and only secondary education of two Portuguese schools. This reduces the generalizability of our conclusions.
+- Weren't able to fully explore the interaction of variables.
+- Weren't able to deeply analyze why certain variables have an influence on math performance.
