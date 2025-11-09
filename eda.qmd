@@ -1,7 +1,5 @@
 ---
 title: "EDA"
-fig-width: 8
-fig-asp: 0.618
 ---
 
 ```{r}
@@ -21,104 +19,19 @@ glimpse(edu_achievement)
 ```
 
 ```{r}
-#| label: pivot-longer
-edu_achievement_longer <- edu_achievement |>
-  pivot_longer(
-    cols = c("Dalc", "Walc"),
-    names_to = "alc_type",
-    values_to = "alc_lvl"
-  )
+#| label: g3-failures-scatterplot
+ggplot(edu_achievement, aes(x = failures, y=G3)) +
+  geom_point()
 ```
 
 ```{r}
-#| label: fig-general-plot
-ggplot(edu_achievement, aes(x = G3)) +
-  geom_histogram(binwidth = 1) +
-  labs(
-    title = "Distribution of Final Grades",
-    subtitle = "Portuguese Schools Gabriel Pereira and Mousinho da Silveira",
-    x = "Final Grade",
-    y = "Count"
-  )
-```
-The bin width of 1 for @fig-general-plot was selected to align with the final grade of 0-20.
-```{r}
-#| label: fig-g3-failures
-#| fig-cap: Differences in medians of students' final grades across the number of past class fails they have.
-ggplot(
-  edu_achievement,
-  aes(
-    x = failures,
-    y = G3,
-    group = failures,
-    color = failures
-  )
-) +
-  geom_jitter() +
-  geom_boxplot(alpha = 0.4) +
-  labs(
-    title = "Final Grade vs Number of Past Class Failures",
-    x = "Number of Past Class Failures",
-    y = "Final Grade"
-  ) +
-  theme(legend.position = "none")
+#| label: wacl-dalc-g3-plot
+#| error: false
+ggplot(edu_achievement, aes(x = ))
 ```
 
 ```{r}
-#| label: failures-summarize
-edu_achievement |>
-  group_by(failures) |>
-  summarize(
-    median = median(G3),
-    mean = mean(G3)
-  )
-```
-
-Based on the side-by-side boxplots in @fig-g3-failures and the summary above of medians and means for final grades, we observe a downward trend of the typical final grade as the number of past class failures increases. An interesting observation from the side-by-side jitterplots is that there seems to be a pattern of two clusters: a large, arguably primary, cluster with data points with higher final grades and a smaller cluster around a final grade of 0. This observed pattern mirrors the potential outliers highlighted in the histogram in @fig-general-plot. The gap between the two clusters in each distribution is substantial, especially for the one with students having 0 past class failures. Perhaps there is another variable that could explain this pattern. Nevertheless, it seems that the number of past class failures is a moderately strong indicator of math performance.
-
-
-```{r}
-#| label: fig-wacl-dalc-g3
-#| fig-asp: 0.8
-new_labels <- c("Dalc" = "Weekday", "Walc" = "Weekend")
-
-edu_achievement_longer |>
-  mutate(
-    alc_type = fct_relevel(alc_type, c("Dalc", "Walc"))
-  ) |>
-ggplot(aes(x = alc_lvl, y = G3, group = alc_lvl, color = alc_lvl)) +
-  geom_jitter() +
-  geom_boxplot(alpha = 0.4) +
-  facet_grid(rows = vars(alc_type), labeller = labeller(.rows = new_labels)) +
-  labs(
-    title = "Final Grade vs Alcoholic Consumption Level",
-    subtitle = "Separated by Weekday and Weekend",
-    x = "Alcoholic Consumption Level",
-    y = "Final Grade"
-  ) +
-  theme(legend.position = "none")
-```
-
-```{r}
-#| label: alc-summarize
-edu_achievement_longer |>
-  group_by(alc_lvl, alc_type) |>
-  summarize(
-    median = median(G3),
-    mean = mean(G3)
-  )
-```
-
-The faceted side-by-side boxplots and the summary show that the distributions of final grades for each combination of alcohol consumption type (weekday or weekend) and level all center at approximately 10-11.
-However, the variability in final grades seems to decrease as alcohol consumption during weekdays increases.
-The variability seems to slightly decrease as alcohol consumption over the weekend increases, but it is much more subtle than that for changes in alcohol consumption during weekdays.
-Additionally, the variability is smaller for weekday alcohol consumption compared to weekend alcohol consumption in the levels 3-5.
-Again, we see the pattern of a large cluster of higher final grades and smaller cluster of lower final grades for the majority of the distributions here.
-Since there is not a change in the typical final grade as alcohol consumption of either form varies, alcohol consumption does not seem to have a strong influence, if at all, on math performance.
-
-```{r}
-#| label: fig-medu-g3
-#| layout-nrow: 2
+#| label: medu-g3-plot
 ggplot(edu_achievement, aes(x = Medu, y = G3)) + 
   geom_point() + 
   geom_smooth(method = "lm") + 
@@ -143,7 +56,7 @@ Gabriel Pereira and Mousinho da Silveira"
 ```
 
 ```{r}
-#| label: fig-internet-g3
+#| label: internet-g3-plot
 ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
   geom_boxplot(alpha = 0.7) +
   labs(
@@ -154,68 +67,29 @@ ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
   theme_minimal(base_size = 14) +
   theme(legend.position = "none")
 
-edu_achievement |>
-  group_by(internet) |>
-  summarize(
-    median = median(G3, na.rm = TRUE),
-    mean = mean(G3, na.rm = TRUE),
-    .groups = "drop"
-  )
-
 ```
-Students with internet access had slightly higher average and median final grades.This suggests that internet access may provide academic advantages — possibly through easier access to online learning materials, homework help, or communication with teachers.
-```{r}
-#| label: health-g3-plot
-ggplot(edu_achievement, aes(x = health, y = G3)) +
-  geom_point(alpha = 0.6) +
-  geom_smooth(method = "lm") +
-  labs(
-    title = "Relationship Between Health Status and Final Grade (G3)",
-    x = "Health Status (1 = Poor, 5 = Excellent)",
-    y = "Final Grade (G3)"
-  ) +
-  theme_minimal(base_size = 14)
-
-edu_achievement |>
-  group_by(health) |>
-  summarize(
-    median = median(G3, na.rm = TRUE),
-    mean = mean(G3, na.rm = TRUE),
-    .groups = "drop"
-  )
-```
-There is a mild positive trend where students reporting better health (1–5 scale) tend to have slightly higher grades. The slope from the regression equation will likely be small but positive, suggesting that overall health may have a modest influence on academic outcomes.
-```{r}
-ggplot(edu_achievement, aes(x = famrel, y = G3)) +
-  geom_point(alpha = 0.6) +
-  geom_smooth(method = "lm") +
-  labs(
-    title = "Relationship Between Family Relationship Quality and Final Grade (G3)",
-    x = "Family Relationship Quality (1 = Very Bad, 5 = Excellent)",
-    y = "Final Grade (G3)"
-  ) +
-  theme_minimal(base_size = 14)
 
 
-edu_achievement |>
-  group_by(famrel) |>
-  summarize(
-    median = median(G3, na.rm = TRUE),
-    mean = mean(G3, na.rm = TRUE),
-    .groups = "drop"
-  )
-```
-Family relationship strength shows a small, mostly stable pattern — students who report stronger family relationships have slightly higher grades on average. The regression may produce a weak positive slope, indicating potentially supportive effects of a positive home environment on academic achievement.
 ```{r}
-#| label: fig-paid-g3
+#| label: paid-g3-plot
 #| message: false
 ggplot(edu_achievement, aes(x = paid, y = G3)) +
   geom_boxplot()
 ```
 
+
 ```{r}
-#| label: fig-freetime-g3
+#| label: freetime-g3-plot
 #| message: false
 ggplot(edu_achievement, aes(x = freetime, y = G3)) +
   geom_point()
 ```
+
+```{r}
+#| label: highered-g3-plot
+#| message: false
+ggplot(edu_achievement, aes(x = higher, y = G3)) +
+  geom_boxplot()
+```
+
+
