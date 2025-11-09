@@ -57,7 +57,7 @@ ggplot(
   geom_jitter() +
   geom_boxplot(alpha = 0.4) +
   labs(
-    title = "Final Grade vs Number of Past Class Failures",
+    title = "Final Grade vs. Number of Past Class Failures",
     x = "Number of Past Class Failures",
     y = "Final Grade"
   ) +
@@ -91,7 +91,7 @@ ggplot(aes(x = alc_lvl, y = G3, group = alc_lvl, color = alc_lvl)) +
   geom_boxplot(alpha = 0.4) +
   facet_grid(rows = vars(alc_type), labeller = labeller(.rows = new_labels)) +
   labs(
-    title = "Final Grade vs Alcoholic Consumption Level",
+    title = "Final Grade vs. Alcoholic Consumption Level",
     subtitle = "Separated by Weekday and Weekend",
     x = "Alcoholic Consumption Level",
     y = "Final Grade"
@@ -115,6 +115,43 @@ The variability seems to slightly decrease as alcohol consumption over the weeke
 Additionally, the variability is smaller for weekday alcohol consumption compared to weekend alcohol consumption in the levels 3-5.
 Again, we see the pattern of a large cluster of higher final grades and smaller cluster of lower final grades for the majority of the distributions here.
 Since there is not a change in the typical final grade as alcohol consumption of either form varies, alcohol consumption does not seem to have a strong influence, if at all, on math performance.
+
+```{r}
+#| label: fig-g3-studytime
+new_labels <- c("<2 hrs", "2-5 hrs", "5-10 hrs", ">10 hrs")
+
+edu_achievement |>
+  mutate(
+    studytime = factor(studytime, labels = new_labels)
+  ) |>
+  ggplot(
+    aes(
+      x = studytime,
+      y = G3,
+      color = studytime
+    )
+  ) +
+    geom_jitter() +
+    geom_boxplot(alpha = 0.4) +
+    labs(
+      title = "Final Grades vs. Study Time",
+      x = "Study Time (levels of hour ranges)",
+      y = "Final Grade"
+    ) +
+    theme(legend.position = "top")
+```
+
+```{r}
+#| label: studytime-summarize
+edu_achievement |>
+  group_by(studytime) |>
+  summarize(
+    median = median(G3),
+    mean = mean(G3)
+  )
+```
+Again, we see the pattern of a large cluster of higher final grades and smaller cluster of lower final grades for the majority of the distributions here.
+The distributions of final grades across amount of study time have similar variability. Their shapes are slightly symmetric to left-skewed. However, there is a slight increase in the mean and median final grade as study time increases. Given that observation, there appears to be a weak influence of study time on final grades.
 
 ```{r}
 #| label: fig-medu-g3
