@@ -19,11 +19,17 @@ In the early 2000s, Portugal's education was falling behind the rest of Europe, 
 
 ## Data
 
-Add data section here.
+In order to analyze which factors are most predictive of student success in Gabriel Pereira and Mousinho da Silveira, the dataset edu_achievement, was used, which contains information on the students' background factors and academic performance. The outcome variable, G3, represents the students' final grade. 
+
+Three predictors were explored: internet access, health status, and family relationshup strength. To visualize the relationship between internet access and G3, a bar graph was used to compare students with and without internet access. For health status, a scatter plot with a fitted linear regression line was used. Similarly, a scatter plot was also used for family relationship strength. 
 
 ## Analysis
 
-Add analysis section here.
+ Students with internet access had a higher mean final grade (10.6) and median grade (11) than those without access (mean = 9.41, median = 10), suggesting that access to online resources may improve academic performance, by increasing accessibility to resources and supplemental practice.
+
+For health status, the mean final grade slightly increased from 10.0 at health = 3 to 10.4 at health = 5. Similarly, the median indicated that students who reported better health tended to perform slightly better academically. A linear regression confirmed a weak but positive association between health and final grades.
+
+Gor family relationship strength (famrel), mean grades ranged from 9.89 to 10.8, and median grades stayed around 10–11. This consistency suggests that while positive family relationships may contribute to emotional support, they do not strongly predict differences in final academic performance. 
 
 ## Discussion
 
