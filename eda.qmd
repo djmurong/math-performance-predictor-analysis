@@ -30,29 +30,38 @@ edu_achievement_longer <- edu_achievement |>
   )
 ```
 
-@fig-g3-failures highlights differences in medians of students' final grades across the number of past class fails they have.
-
+```{r}
+#| label: fig-general-plot
+ggplot(edu_achievement, aes(x = G3)) +
+  geom_histogram(binwidth = 1) +
+  labs(
+    title = "Distribution of Final Grades",
+    subtitle = "Portuguese Schools Gabriel Pereira and Mousinho da Silveira",
+    x = "Final Grade",
+    y = "Count"
+  )
+```
+The bin width of 1 for @fig-general-plot was selected to align with the final grade of 0-20.
 ```{r}
 #| label: fig-g3-failures
-#| layout-ncol: 2
-#| fig-cap: Final Grade vs. Number of Past Class Failures
-ggplot(edu_achievement, aes(x = failures, y = G3, group = failures, color = failures)) +
-  geom_boxplot() +
+#| fig-cap: Differences in medians of students' final grades across the number of past class fails they have.
+ggplot(
+  edu_achievement,
+  aes(
+    x = failures,
+    y = G3,
+    group = failures,
+    color = failures
+  )
+) +
+  geom_jitter() +
+  geom_boxplot(alpha = 0.4) +
   labs(
     title = "Final Grade vs Number of Past Class Failures",
     x = "Number of Past Class Failures",
     y = "Final Grade"
   ) +
   theme(legend.position = "none")
-
-ggplot(edu_achievement, aes(x = failures, y = G3)) +
-  geom_point() +
-  geom_smooth(method = "lm")
-  labs(
-    title = "Final Grade vs Number of Past Class Failures",
-    x = "Number of Past Class Failures",
-    y = "Final Grade"
-  )
 ```
 
 ```{r}
@@ -65,31 +74,12 @@ edu_achievement |>
   )
 ```
 
-Based on the plots and the summary of median and mean values for final grades, we observe a weak, negative, linear relationship between the number of past class failures and the final grade.
-We will now determine the linear regression equation for final grade vs past class failures.
+Based on the side-by-side boxplots in @fig-g3-failures and the summary above of medians and means for final grades, we observe a downward trend of the typical final grade as the number of past class failures increases. An interesting observation from the side-by-side jitterplots is that there seems to be a pattern of two clusters: a large, arguably primary, cluster with data points with higher final grades and a smaller cluster around a final grade of 0. This observed pattern mirrors the potential outliers highlighted in the histogram in @fig-general-plot. The gap between the two clusters in each distribution is substantial, especially for the one with students having 0 past class failures. Perhaps there is another variable that could explain this pattern. Nevertheless, it seems that the number of past class failures is a moderately strong indicator of math performance.
 
-```{r}
-#| label: g3-failures-lin-reg
-g3_failures_fit <- linear_reg() |>
-  fit(G3 ~ failures, data = edu_achievement)
-
-tidy(g3_failures_fit)
-```
-
-We get the following equation: $$\widehat{final~grade} = 11.16 - 2.22 \times failures$$
-
-```{r}
-#| label: r-r-squared
-edu_achievement |>
-  summarize(
-    r = cor(failures, G3),
-    r_squared = r^2
-  )
-```
-From the summary, we see that the correlation is weak, and the R-squared value is very low. The low R-squared indicates that the variability of final grades that the model can explain with the variable of past class failures is very low, only 13%. Thus, we deem the number of past class failures as a weak predictor/factor for math performance.
 
 ```{r}
 #| label: fig-wacl-dalc-g3
+#| fig-asp: 0.8
 new_labels <- c("Dalc" = "Weekday", "Walc" = "Weekend")
 
 edu_achievement_longer |>
@@ -97,7 +87,8 @@ edu_achievement_longer |>
     alc_type = fct_relevel(alc_type, c("Dalc", "Walc"))
   ) |>
 ggplot(aes(x = alc_lvl, y = G3, group = alc_lvl, color = alc_lvl)) +
-  geom_boxplot() +
+  geom_jitter() +
+  geom_boxplot(alpha = 0.4) +
   facet_grid(rows = vars(alc_type), labeller = labeller(.rows = new_labels)) +
   labs(
     title = "Final Grade vs Alcoholic Consumption Level",
@@ -119,9 +110,11 @@ edu_achievement_longer |>
 ```
 
 The faceted side-by-side boxplots and the summary show that the distributions of final grades for each combination of alcohol consumption type (weekday or weekend) and level all center at approximately 10-11.
-The variability seems to lower as alcohol consumption of either form increases.
-However, there does not appear to have any substantial changes in variability across the form of alcohol consumption.
-Since there are only very marginal observed changes due to changes in alcohol consumption type and level, alcohol consumption does not seem to be a strong factor for math performance.
+However, the variability in final grades seems to decrease as alcohol consumption during weekdays increases.
+The variability seems to slightly decrease as alcohol consumption over the weekend increases, but it is much more subtle than that for changes in alcohol consumption during weekdays.
+Additionally, the variability is smaller for weekday alcohol consumption compared to weekend alcohol consumption in the levels 3-5.
+Again, we see the pattern of a large cluster of higher final grades and smaller cluster of lower final grades for the majority of the distributions here.
+Since there is not a change in the typical final grade as alcohol consumption of either form varies, alcohol consumption does not seem to have a strong influence, if at all, on math performance.
 
 ```{r}
 #| label: fig-medu-g3
@@ -226,129 +219,3 @@ ggplot(edu_achievement, aes(x = paid, y = G3)) +
 ggplot(edu_achievement, aes(x = freetime, y = G3)) +
   geom_point()
 ```
-
-```{r}
-#| label: dem-vars-model-fit
-dem_vars = c(
-  "school",
-  "sex",
-  "age",
-  "address",
-  "famsize",
-  "Pstatus",
-  "Medu",
-  "Fedu",
-  "Mjob",
-  "Fjob",
-  "reason",
-  "guardian"
-)
-formula_str_dem <- paste("G3 ~", paste(dem_vars, collapse = " + "))
-rec_dem <- recipe(as.formula(formula_str_dem), data = edu_achievement)
-
-dem_model <- linear_reg()
-
-wf_dem <- workflow() |>
-  add_recipe(rec_dem) |>
-  add_model(dem_model)
-
-dem_model <- fit(wf_dem, data = edu_achievement)
-
-tidy(dem_model)
-```
-
-```{r}
-#|label: study-vars-model-fit
-study_vars = c(
-  "studytime",
-  "failures",
-  "schoolsup",
-  "famsup",
-  "paid",
-  "activities",
-  "nursery",
-  "higher",
-  "internet",
-  "romantic",
-  "famrel",
-  "freetime",
-  "goout",
-  "Dalc",
-  "Walc",
-  "health",
-  "absences"
-)
-formula_str_study <- paste("G3 ~", paste(study_vars, collapse = " + "))
-rec_study <- recipe(as.formula(formula_str_study), data = edu_achievement)
-
-study_model <- linear_reg()
-
-wf_study <- workflow() |>
-  add_recipe(rec_study) |>
-  add_model(study_model)
-
-study_model <- fit(wf_study, data = edu_achievement)
-
-tidy(study_model)
-```
-
-```{r}
-#| label: glance
-glance(dem_model)
-
-glance(study_model)
-```
-
-We observe from the p-values of the variables in the two models, that several of them are not statistically significant for fitting.
-We will examine new models with variables having p-values lower than 0.05 (5e-2).
-
-```{r}
-#| label: reduced-dem-model
-dem_vars_reduced = c(
-  "sex",
-  "age",
-  "reason"
-)
-formula_str_dem_reduced <- paste("G3 ~", paste(dem_vars_reduced, collapse = " + "))
-rec_dem_reduced <- recipe(as.formula(formula_str_dem_reduced), data = edu_achievement)
-
-dem_model_reduced <- linear_reg()
-
-wf_dem_reduced <- workflow() |>
-  add_recipe(rec_dem_reduced) |>
-  add_model(dem_model_reduced)
-
-dem_model_reduced <- fit(wf_dem_reduced, data = edu_achievement)
-
-tidy(dem_model_reduced)
-```
-
-```{r}
-#| label: reduced-study-model
-study_vars_reduced = c(
-  "failures",
-  "romantic",
-  "goout"
-)
-formula_str_study_reduced <- paste("G3 ~", paste(study_vars_reduced, collapse = " + "))
-rec_study_reduced <- recipe(as.formula(formula_str_study_reduced), data = edu_achievement)
-
-study_model_reduced <- linear_reg()
-
-wf_study_reduced <- workflow() |>
-  add_recipe(rec_study_reduced) |>
-  add_model(study_model_reduced)
-
-study_model_reduced <- fit(wf_study_reduced, data = edu_achievement)
-
-tidy(study_model_reduced)
-```
-
-```{r}
-#| label: glance-reduced
-glance(dem_model_reduced)
-
-glance(study_model_reduced)
-```
-
-Based on the results of the multiple regression models, there does not appear to be any strong predictor of educational performance.
