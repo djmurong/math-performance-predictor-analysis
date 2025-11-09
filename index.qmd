@@ -19,7 +19,9 @@ In the early 2000s, Portugal's education was falling behind the rest of Europe, 
 
 ## Data
 
-Add data section here.
+In order to analyze which factors are most predictive of student success in Gabriel Pereira and Mousinho da Silveira, the dataset edu_achievement, was used, which contains information on the students' background factors and academic performance. The outcome variable, G3, represents the students' final grade. 
+
+Three predictors were explored: internet access, health status, and family relationshup strength. To visualize the relationship between internet access and G3, a bar graph was used to compare students with and without internet access. For health status, a scatter plot with a fitted linear regression line was used. Similarly, a scatter plot was also used for family relationship strength. 
 
 ## Analysis
 
