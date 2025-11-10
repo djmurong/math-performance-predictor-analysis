@@ -265,7 +265,6 @@ ggplot(edu_achievement, aes(x = freetime, y = G3)) +
   geom_point()
 ```
 
-
 ```{r}
 #| label: highered-g3-plot
 #| message: false
