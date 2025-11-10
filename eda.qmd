@@ -4,14 +4,11 @@ fig-asp: 0.618
 ---
 
 ```{r}
-
 #| label: load-packages
 library(tidyverse)
 library(tidymodels)
 library(readxl)
 ```
-
-
 
 
 ```{r}
@@ -48,6 +45,7 @@ ggplot(edu_achievement, aes(x = G3)) +
 The bin width of 1 for @fig-general-plot was selected to align with the final grade of 0-20.
 ```{r}
 #| label: fig-g3-failures
+#| fig-width: 5
 #| fig-cap: Differences in medians of students' final grades across the number of past class fails they have.
 ggplot(
   edu_achievement,
@@ -58,13 +56,19 @@ ggplot(
     color = failures
   )
 ) +
-  geom_jitter() +
-  geom_boxplot(alpha = 0.4) +
+  geom_jitter(
+    color = "black"
+  ) +
+  geom_boxplot(
+    alpha = 0.6,
+    lwd = 1
+  ) +
   labs(
     title = "Final Grade vs Number of Past Class Failures",
     x = "Number of Past Class Failures",
     y = "Final Grade"
   ) +
+  scale_color_viridis_c() +
   theme(legend.position = "none")
 ```
 
@@ -88,17 +92,31 @@ new_labels <- c("Dalc" = "Weekday", "Walc" = "Weekend")
 
 edu_achievement_longer |>
   mutate(
-    alc_type = fct_relevel(alc_type, c("Dalc", "Walc"))
+    alc_type = fct_relevel(alc_type, c("Dalc", "Walc")),
+    alc_lvl = fct_relevel(as.character(alc_lvl))
   ) |>
 ggplot(aes(x = alc_lvl, y = G3, group = alc_lvl, color = alc_lvl)) +
-  geom_jitter() +
-  geom_boxplot(alpha = 0.4) +
+  geom_jitter(
+    color = "black"
+  ) +
+  geom_boxplot(
+    alpha = 0.6,
+    lwd = 1
+  ) +
   facet_grid(rows = vars(alc_type), labeller = labeller(.rows = new_labels)) +
   labs(
     title = "Final Grade vs Alcoholic Consumption Level",
     subtitle = "Separated by Weekday and Weekend",
     x = "Alcoholic Consumption Level",
     y = "Final Grade"
+  ) +
+  scale_color_manual(
+    values = c(
+    "1" = "red",
+    "2" = "yellow",
+    "3" = "orange",
+    "4" = "darkgoldenrod",
+    "5" = "brown")
   ) +
   theme(legend.position = "none")
 ```
@@ -187,9 +205,6 @@ Gabriel Pereira and Mousinho da Silveira"
 ```{r}
 #| label: fig-internet-g3
 ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
-  geom_boxplot(alpha = 0.7)
-
-ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
   geom_boxplot(alpha = 0.7) +
   labs(
     title = "Distribution of Final Grades (G3) by Internet Access",
@@ -254,39 +269,22 @@ Family relationship strength shows a small, mostly stable pattern — students w
 ```{r}
 #| label: fig-paid-g3
 #| message: false
-ggplot(edu_achievement, aes(x = paid, y = G3, fill = paid)) +
-  geom_boxplot() +
-  labs(
-    title = "Relationship Between Paid Classes and Final Grade",
-    x = "Taking Paid Classes",
-    y = "Final Grade") +
-  theme_minimal(base_size = 14) +
-  theme(legend.position = "none")
+ggplot(edu_achievement, aes(x = paid, y = G3)) +
+  geom_boxplot()
 ```
 
 ```{r}
 #| label: fig-freetime-g3
 #| message: false
 ggplot(edu_achievement, aes(x = freetime, y = G3)) +
-  geom_point() +
-  labs(
-    title = "Relationship Between Free Time and Final Grade",
-    x = "Amount of Free Time",
-    y = "Final Grade") +
-  theme_minimal(base_size = 14) +
-  theme(legend.position = "none")
+  geom_point()
 ```
+
 
 ```{r}
 #| label: highered-g3-plot
 #| message: false
-ggplot(edu_achievement, aes(x = higher, y = G3, fill = higher)) +
-  geom_boxplot(alpha=0.7) +
-  labs(
-    title = "Relationship Between Higher Education Interest and Final Grade",
-    x = "Intent to pursue higher education",
-    y = "Final Grade") +
-  theme_minimal(base_size = 14) +
-  theme(legend.position = "none")
+ggplot(edu_achievement, aes(x = higher, y = G3)) +
+  geom_boxplot()
 ```
 
