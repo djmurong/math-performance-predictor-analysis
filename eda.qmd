@@ -104,6 +104,43 @@ Again, we see the pattern of a large cluster of higher final grades and smaller 
 Since there is not a change in the typical final grade as alcohol consumption of either form varies, alcohol consumption does not seem to have a strong influence, if at all, on math performance.
 
 ```{r}
+#| label: fig-g3-studytime
+new_labels <- c("<2 hrs", "2-5 hrs", "5-10 hrs", ">10 hrs")
+
+edu_achievement |>
+  mutate(
+    studytime = factor(studytime, labels = new_labels)
+  ) |>
+  ggplot(
+    aes(
+      x = studytime,
+      y = G3,
+      color = studytime
+    )
+  ) +
+    geom_jitter() +
+    geom_boxplot(alpha = 0.4) +
+    labs(
+      title = "Final Grades vs. Study Time",
+      x = "Study Time (levels of hour ranges)",
+      y = "Final Grade"
+    ) +
+    theme(legend.position = "top")
+```
+
+```{r}
+#| label: studytime-summarize
+edu_achievement |>
+  group_by(studytime) |>
+  summarize(
+    median = median(G3),
+    mean = mean(G3)
+  )
+```
+Again, we see the pattern of a large cluster of higher final grades and smaller cluster of lower final grades for the majority of the distributions here.
+The distributions of final grades across amount of study time have similar variability. Their shapes are slightly symmetric to left-skewed. However, there is a slight increase in the mean and median final grade as study time increases. Given that observation, there appears to be a weak influence of study time on final grades.
+
+```{r}
 #| label: fig-medu-g3
 #| layout-nrow: 2
 ggplot(edu_achievement, aes(x = Medu, y = G3)) + 
