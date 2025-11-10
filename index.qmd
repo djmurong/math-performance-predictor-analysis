@@ -36,7 +36,17 @@ Gor family relationship strength (famrel), mean grades ranged from 9.89 to 10.8,
 ## Discussion
 
 Conclusions:
+- Largest indicators of success (based on final grade) were interest in higher education, low class failures, and low alcohol consumption
+- Surprisingly, extra paid classes in the subject and amount of free time seemed to have little correlation to final grade
+- The results indicate that people's presumptions of which factors influence math performance the most might be misguided
+
+Applications:
+- Areas of focus for highest return
+- Delegate more resources to strongest influences
+
 Limitations:
 - The data we analyzed were limited to math performance and only secondary education of two Portuguese schools. This reduces the generalizability of our conclusions.
-- Weren't able to fully explore the interaction of variables.
-- Weren't able to deeply analyze why certain variables have an influence on math performance.
+- Questionnaires might not reflect full truth
+- Final grade (G3) does not entirely explain student success
+- Weren't able to fully explore the interaction of variables
+- Weren't able to deeply analyze why certain variables have an influence on math performance
