@@ -4,19 +4,6 @@ fig-asp: 0.618
 ---
 
 ```{r}
-#| label: load-packages
-library(tidyverse)
-library(tidymodels)
-library(readxl)
-```
-
-
-```{r}
-#| label: load-data
-edu_achievement <- read_excel(
-  "data/educationachievement.xlsx",
-  skip = 1
-)
 glimpse(edu_achievement)
 ```
 
@@ -32,7 +19,6 @@ edu_achievement_longer <- edu_achievement |>
 
 ```{r}
 #| label: fig-general-plot
-#| fig-width: 5
 ggplot(edu_achievement, aes(x = G3)) +
   geom_histogram(binwidth = 1) +
   labs(
@@ -45,7 +31,6 @@ ggplot(edu_achievement, aes(x = G3)) +
 The bin width of 1 for @fig-general-plot was selected to align with the final grade of 0-20.
 ```{r}
 #| label: fig-g3-failures
-#| fig-width: 5
 #| fig-cap: Differences in medians of students' final grades across the number of past class fails they have.
 ggplot(
   edu_achievement,
@@ -56,19 +41,13 @@ ggplot(
     color = failures
   )
 ) +
-  geom_jitter(
-    color = "black"
-  ) +
-  geom_boxplot(
-    alpha = 0.6,
-    lwd = 1
-  ) +
+  geom_jitter() +
+  geom_boxplot(alpha = 0.4) +
   labs(
     title = "Final Grade vs Number of Past Class Failures",
     x = "Number of Past Class Failures",
     y = "Final Grade"
   ) +
-  scale_color_viridis_c() +
   theme(legend.position = "none")
 ```
 
@@ -92,31 +71,17 @@ new_labels <- c("Dalc" = "Weekday", "Walc" = "Weekend")
 
 edu_achievement_longer |>
   mutate(
-    alc_type = fct_relevel(alc_type, c("Dalc", "Walc")),
-    alc_lvl = fct_relevel(as.character(alc_lvl))
+    alc_type = fct_relevel(alc_type, c("Dalc", "Walc"))
   ) |>
 ggplot(aes(x = alc_lvl, y = G3, group = alc_lvl, color = alc_lvl)) +
-  geom_jitter(
-    color = "black"
-  ) +
-  geom_boxplot(
-    alpha = 0.6,
-    lwd = 1
-  ) +
+  geom_jitter() +
+  geom_boxplot(alpha = 0.4) +
   facet_grid(rows = vars(alc_type), labeller = labeller(.rows = new_labels)) +
   labs(
     title = "Final Grade vs Alcoholic Consumption Level",
     subtitle = "Separated by Weekday and Weekend",
     x = "Alcoholic Consumption Level",
     y = "Final Grade"
-  ) +
-  scale_color_manual(
-    values = c(
-    "1" = "red",
-    "2" = "yellow",
-    "3" = "orange",
-    "4" = "darkgoldenrod",
-    "5" = "brown")
   ) +
   theme(legend.position = "none")
 ```
@@ -139,68 +104,11 @@ Again, we see the pattern of a large cluster of higher final grades and smaller 
 Since there is not a change in the typical final grade as alcohol consumption of either form varies, alcohol consumption does not seem to have a strong influence, if at all, on math performance.
 
 ```{r}
-#| label: fig-g3-studytime
-new_labels <- c("<2 hrs", "2-5 hrs", "5-10 hrs", ">10 hrs")
-
-edu_achievement |>
-  mutate(
-    studytime = factor(studytime, labels = new_labels)
-  ) |>
-  ggplot(
-    aes(
-      x = studytime,
-      y = G3,
-      color = studytime
-    )
-  ) +
-    geom_jitter() +
-    geom_boxplot(alpha = 0.4) +
-    labs(
-      title = "Final Grades vs. Study Time",
-      x = "Study Time (levels of hour ranges)",
-      y = "Final Grade"
-    ) +
-    theme(legend.position = "top")
-```
-
-```{r}
-#| label: studytime-summarize
-edu_achievement |>
-  group_by(studytime) |>
-  summarize(
-    median = median(G3),
-    mean = mean(G3)
-  )
-```
-Again, we see the pattern of a large cluster of higher final grades and smaller cluster of lower final grades for the majority of the distributions here.
-The distributions of final grades across amount of study time have similar variability. Their shapes are slightly symmetric to left-skewed. However, there is a slight increase in the mean and median final grade as study time increases. Given that observation, there appears to be a weak influence of study time on final grades.
-
-```{r}
-#| label: fig-medu-fedu-g3
+#| label: fig-medu-g3
 #| layout-nrow: 2
-ggplot(edu_achievement, aes(x = Medu, y = G3, group = Medu, color = Medu)) + 
-  geom_jitter() +
-  geom_boxplot(alpha = 0.3) +
-  labs(
-    x = "Mother’s Education Level",
-    y = "Final Grade (1-20)",
-    title = "Final Grade of Students Based on Mother’s Education Level",
-    subtitle = "Student Performance in Math in the Portugueuse schools of 
-Gabriel Pereira and Mousinho da Silveira"
-  ) +
-  theme(legend.position = "none")
-
-ggplot(edu_achievement, aes(x = Fedu, y = G3, group = Fedu, color = Fedu)) + 
-  geom_jitter() +
-  geom_boxplot(alpha = 0.3) +
-  labs(
-    x = "Father’s Education Level",
-    y = "Final Grade (1-20)",
-    title = "Final Grade of Students Based on Father’s Education Level",
-    subtitle = "Student Performance in Math in the Portugueuse schools of 
-Gabriel Pereira and Mousinho da Silveira"
-  ) +
-  theme(legend.position = "none")
+ggplot(edu_achievement, aes(x = Medu, y = G3)) + 
+  geom_point() + 
+  geom_smooth(method = "lm")
 ```
 
 ```{r}
@@ -208,10 +116,7 @@ Gabriel Pereira and Mousinho da Silveira"
 ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
   geom_boxplot(alpha = 0.7) +
   labs(
-    title = "Distribution of Final Grades (G3) by Internet Access",
-    x = "Internet Access",
-    y = "Final Grade (G3)"
-  ) +
+ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
   theme_minimal(base_size = 14) +
   theme(legend.position = "none")
 
@@ -227,14 +132,15 @@ edu_achievement |>
 Students with internet access had slightly higher average and median final grades.This suggests that internet access may provide academic advantages — possibly through easier access to online learning materials, homework help, or communication with teachers.
 ```{r}
 #| label: health-g3-plot
-ggplot(edu_achievement, aes(x = health, y = G3)) +
-  geom_point(alpha = 0.6) +
-  geom_smooth(method = "lm") +
+ggplot(edu_achievement, aes(x = factor(health), y = G3, fill = factor(health))) +
+  geom_boxplot(alpha = 0.7) +
   labs(
-    title = "Relationship Between Health Status and Final Grade (G3)",
-    x = "Health Status (1 = Poor, 5 = Excellent)",
+    title = "Distribution of Final Grades by Health Status",
+    x = "Health (1 = Poor, 5 = Excellent)",
     y = "Final Grade (G3)"
   ) +
+  theme_minimal() +
+  theme(legend.position = "none")
   theme_minimal(base_size = 14)
 
 edu_achievement |>
@@ -243,19 +149,19 @@ edu_achievement |>
     median = median(G3, na.rm = TRUE),
     mean = mean(G3, na.rm = TRUE),
     .groups = "drop"
-  )
+  
 ```
 There is a mild positive trend where students reporting better health (1–5 scale) tend to have slightly higher grades. The slope from the regression equation will likely be small but positive, suggesting that overall health may have a modest influence on academic outcomes.
 ```{r}
-ggplot(edu_achievement, aes(x = famrel, y = G3)) +
-  geom_point(alpha = 0.6) +
-  geom_smooth(method = "lm") +
+ggplot(edu_achievement, aes(x = factor(famrel), y = G3, fill = factor(famrel))) +
+  geom_boxplot(alpha = 0.7) +
   labs(
-    title = "Relationship Between Family Relationship Quality and Final Grade (G3)",
-    x = "Family Relationship Quality (1 = Very Bad, 5 = Excellent)",
+    title = "Distribution of Final Grades by Family Relationship Strength",
+    x = "Family Relationship (1 = Very Bad, 5 = Excellent)",
     y = "Final Grade (G3)"
   ) +
-  theme_minimal(base_size = 14)
+  theme_minimal() +
+  theme(legend.position = "none")
 
 
 edu_achievement |>
@@ -270,40 +176,21 @@ Family relationship strength shows a small, mostly stable pattern — students w
 ```{r}
 #| label: fig-paid-g3
 #| message: false
-ggplot(edu_achievement, aes(x = paid, y = G3, fill = paid)) +
-  geom_boxplot() +
-  labs(
-    title = "Relationship Between Paid Classes and Final Grade",
-    x = "Taking Paid Classes",
-    y = "Final Grade") +
-  theme_minimal(base_size = 14) +
-  theme(legend.position = "none")
+ggplot(edu_achievement, aes(x = paid, y = G3)) +
+  geom_boxplot()
 ```
+
 
 ```{r}
 #| label: fig-freetime-g3
 #| message: false
 ggplot(edu_achievement, aes(x = freetime, y = G3)) +
-  geom_point() +
-  labs(
-    title = "Relationship Between Free Time and Final Grade",
-    x = "Amount of Free Time",
-    y = "Final Grade") +
-  theme_minimal(base_size = 14) +
-  theme(legend.position = "none")
+  geom_point()
 ```
-
 
 ```{r}
 #| label: highered-g3-plot
 #| message: false
-ggplot(edu_achievement, aes(x = higher, y = G3, fill = higher)) +
-  geom_boxplot(alpha=0.7) +
-  labs(
-    title = "Relationship Between Higher Education Interest and Final Grade",
-    x = "Intent to pursue higher education",
-    y = "Final Grade") +
-  theme_minimal(base_size = 14) +
-  theme(legend.position = "none")
+ggplot(edu_achievement, aes(x = higher, y = G3)) +
+  geom_boxplot()
 ```
-
