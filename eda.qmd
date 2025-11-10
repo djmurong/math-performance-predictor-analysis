@@ -254,15 +254,27 @@ Family relationship strength shows a small, mostly stable pattern — students w
 ```{r}
 #| label: fig-paid-g3
 #| message: false
-ggplot(edu_achievement, aes(x = paid, y = G3)) +
-  geom_boxplot()
+ggplot(edu_achievement, aes(x = paid, y = G3, fill = paid)) +
+  geom_boxplot() +
+  labs(
+    title = "Relationship Between Paid Classes and Final Grade",
+    x = "Taking Paid Classes",
+    y = "Final Grade") +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none")
 ```
 
 ```{r}
 #| label: fig-freetime-g3
 #| message: false
 ggplot(edu_achievement, aes(x = freetime, y = G3)) +
-  geom_point()
+  geom_point() +
+  labs(
+    title = "Relationship Between Free Time and Final Grade",
+    x = "Amount of Free Time",
+    y = "Final Grade") +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none")
 ```
 
 ```{r}
