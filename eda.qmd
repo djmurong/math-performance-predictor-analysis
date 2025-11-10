@@ -4,6 +4,19 @@ fig-asp: 0.618
 ---
 
 ```{r}
+#| label: load-packages
+library(tidyverse)
+library(tidymodels)
+library(readxl)
+```
+
+
+```{r}
+#| label: load-data
+edu_achievement <- read_excel(
+  "data/educationachievement.xlsx",
+  skip = 1
+)
 glimpse(edu_achievement)
 ```
 
@@ -19,6 +32,7 @@ edu_achievement_longer <- edu_achievement |>
 
 ```{r}
 #| label: fig-general-plot
+#| fig-width: 5
 ggplot(edu_achievement, aes(x = G3)) +
   geom_histogram(binwidth = 1) +
   labs(
@@ -153,7 +167,10 @@ ggplot(edu_achievement, aes(x = Medu, y = G3)) +
 ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
   geom_boxplot(alpha = 0.7) +
   labs(
-ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
+    title = "Distribution of Final Grades (G3) by Internet Access",
+    x = "Internet Access",
+    y = "Final Grade (G3)"
+  ) +
   theme_minimal(base_size = 14) +
   theme(legend.position = "none")
 
