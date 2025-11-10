@@ -180,25 +180,27 @@ The distributions of final grades across amount of study time have similar varia
 #| layout-nrow: 2
 ggplot(edu_achievement, aes(x = Medu, y = G3, group = Medu, color = Medu)) + 
   geom_jitter() +
-  geom_boxplot(alpha = 0.3)
+  geom_boxplot(alpha = 0.3) +
   labs(
     x = "Mother’s Education Level",
     y = "Final Grade (1-20)",
     title = "Final Grade of Students Based on Mother’s Education Level",
     subtitle = "Student Performance in Math in the Portugueuse schools of 
 Gabriel Pereira and Mousinho da Silveira"
-  )
+  ) +
+  theme(legend.position = "none")
 
 ggplot(edu_achievement, aes(x = Fedu, y = G3, group = Fedu, color = Fedu)) + 
   geom_jitter() +
-  geom_boxplot(alpha = 0.3)
+  geom_boxplot(alpha = 0.3) +
   labs(
     x = "Father’s Education Level",
     y = "Final Grade (1-20)",
     title = "Final Grade of Students Based on Father’s Education Level",
     subtitle = "Student Performance in Math in the Portugueuse schools of 
 Gabriel Pereira and Mousinho da Silveira"
-  )
+  ) +
+  theme(legend.position = "none")
 ```
 
 ```{r}
@@ -268,22 +270,40 @@ Family relationship strength shows a small, mostly stable pattern — students w
 ```{r}
 #| label: fig-paid-g3
 #| message: false
-ggplot(edu_achievement, aes(x = paid, y = G3)) +
-  geom_boxplot()
+ggplot(edu_achievement, aes(x = paid, y = G3, fill = paid)) +
+  geom_boxplot() +
+  labs(
+    title = "Relationship Between Paid Classes and Final Grade",
+    x = "Taking Paid Classes",
+    y = "Final Grade") +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none")
 ```
 
 ```{r}
 #| label: fig-freetime-g3
 #| message: false
 ggplot(edu_achievement, aes(x = freetime, y = G3)) +
-  geom_point()
+  geom_point() +
+  labs(
+    title = "Relationship Between Free Time and Final Grade",
+    x = "Amount of Free Time",
+    y = "Final Grade") +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none")
 ```
 
 
 ```{r}
 #| label: highered-g3-plot
 #| message: false
-ggplot(edu_achievement, aes(x = higher, y = G3)) +
-  geom_boxplot()
+ggplot(edu_achievement, aes(x = higher, y = G3, fill = higher)) +
+  geom_boxplot(alpha=0.7) +
+  labs(
+    title = "Relationship Between Higher Education Interest and Final Grade",
+    x = "Intent to pursue higher education",
+    y = "Final Grade") +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none")
 ```
 
