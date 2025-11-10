@@ -178,28 +178,27 @@ The distributions of final grades across amount of study time have similar varia
 ```{r}
 #| label: fig-medu-fedu-g3
 #| layout-nrow: 2
-ggplot(edu_achievement, aes(x = Medu, y = G3, group = Medu)) + 
-  geom_point() +
-  geom_smooth(method = "lm") +
+ggplot(edu_achievement, aes(x = Medu, y = G3, group = Medu, color = Medu)) + 
+  geom_jitter() +
+  geom_boxplot(alpha = 0.3)
   labs(
     x = "Mother’s Education Level",
     y = "Final Grade (1-20)",
     title = "Final Grade of Students Based on Mother’s Education Level",
-    subtitle = "Student Serformance in Math in the Portugueuse schools of 
+    subtitle = "Student Performance in Math in the Portugueuse schools of 
 Gabriel Pereira and Mousinho da Silveira"
   )
 
-ggplot(edu_achievement, aes(x = Fedu, y = G3)) + 
-  geom_point() + 
-  geom_smooth(method = "lm") + 
+ggplot(edu_achievement, aes(x = Fedu, y = G3, group = Fedu, color = Fedu)) + 
+  geom_jitter() +
+  geom_boxplot(alpha = 0.3)
   labs(
     x = "Father’s Education Level",
     y = "Final Grade (1-20)",
     title = "Final Grade of Students Based on Father’s Education Level",
-    subtitle = "Student Serformance in Math in the Portugueuse schools of 
+    subtitle = "Student Performance in Math in the Portugueuse schools of 
 Gabriel Pereira and Mousinho da Silveira"
   )
-```
 ```
 
 ```{r}
