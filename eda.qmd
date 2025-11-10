@@ -4,6 +4,13 @@ fig-asp: 0.618
 ---
 
 ```{r}
+library(tidyverse)
+library(readxl)
+```
+
+
+
+```{r}
 glimpse(edu_achievement)
 ```
 
@@ -151,8 +158,8 @@ ggplot(edu_achievement, aes(x = Medu, y = G3)) +
 ```{r}
 #| label: fig-internet-g3
 ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
-  geom_boxplot(alpha = 0.7) +
-  labs(
+  geom_boxplot(alpha = 0.7)
+
 ggplot(edu_achievement, aes(x = internet, y = G3, fill = internet)) +
   theme_minimal(base_size = 14) +
   theme(legend.position = "none")
@@ -227,6 +234,12 @@ ggplot(edu_achievement, aes(x = freetime, y = G3)) +
 ```{r}
 #| label: highered-g3-plot
 #| message: false
-ggplot(edu_achievement, aes(x = higher, y = G3)) +
-  geom_boxplot()
+ggplot(edu_achievement, aes(x = higher, y = G3, fill = higher)) +
+  geom_boxplot(alpha=0.7) +
+  labs(
+    title = "Relationship Between Higher Education Interest and Final Grade",
+    x = "Intent to pursue higher education",
+    y = "Final Grade") +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none")
 ```
