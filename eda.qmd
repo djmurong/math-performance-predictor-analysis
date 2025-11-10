@@ -118,30 +118,6 @@ Again, we see the pattern of a large cluster of higher final grades and smaller 
 Since there is not a change in the typical final grade as alcohol consumption of either form varies, alcohol consumption does not seem to have a strong influence, if at all, on math performance.
 
 ```{r}
-#| label: fig-medu-g3
-#| layout-nrow: 2
-ggplot(edu_achievement, aes(x = Medu, y = G3, group = Medu)) + 
-  geom_point() +
-  geom_smooth(method = "lm") +
-  labs(
-    x = "Mother’s Education Level",
-    y = "Final Grade (1-20)",
-    title = "Final Grade of Students Based on Mother’s Education Level",
-    subtitle = "Student Serformance in Math in the Portugueuse schools of 
-Gabriel Pereira and Mousinho da Silveira"
-  )
-
-ggplot(edu_achievement, aes(x = Fedu, y = G3)) + 
-  geom_point() + 
-  geom_smooth(method = "lm") + 
-  labs(
-    x = "Father’s Education Level",
-    y = "Final Grade (1-20)",
-    title = "Final Grade of Students Based on Father’s Education Level",
-    subtitle = "Student Serformance in Math in the Portugueuse schools of 
-Gabriel Pereira and Mousinho da Silveira"
-  )
-=======
 #| label: fig-g3-studytime
 new_labels <- c("<2 hrs", "2-5 hrs", "5-10 hrs", ">10 hrs")
 
@@ -179,11 +155,30 @@ Again, we see the pattern of a large cluster of higher final grades and smaller 
 The distributions of final grades across amount of study time have similar variability. Their shapes are slightly symmetric to left-skewed. However, there is a slight increase in the mean and median final grade as study time increases. Given that observation, there appears to be a weak influence of study time on final grades.
 
 ```{r}
-#| label: fig-medu-g3
+#| label: fig-medu-fedu-g3
 #| layout-nrow: 2
-ggplot(edu_achievement, aes(x = Medu, y = G3)) + 
+ggplot(edu_achievement, aes(x = Medu, y = G3, group = Medu)) + 
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(
+    x = "Mother’s Education Level",
+    y = "Final Grade (1-20)",
+    title = "Final Grade of Students Based on Mother’s Education Level",
+    subtitle = "Student Serformance in Math in the Portugueuse schools of 
+Gabriel Pereira and Mousinho da Silveira"
+  )
+
+ggplot(edu_achievement, aes(x = Fedu, y = G3)) + 
   geom_point() + 
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm") + 
+  labs(
+    x = "Father’s Education Level",
+    y = "Final Grade (1-20)",
+    title = "Final Grade of Students Based on Father’s Education Level",
+    subtitle = "Student Serformance in Math in the Portugueuse schools of 
+Gabriel Pereira and Mousinho da Silveira"
+  )
+```
 ```
 
 ```{r}
