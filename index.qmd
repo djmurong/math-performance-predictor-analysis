@@ -11,7 +11,7 @@ fig-asp: 0.618
 
 ## Abstract
 
-This project will analyze data from the Portuguese schools, Gabriel Pereira and Mousinho da Silveira, to determine which factors most strongly influence students' academic performance in mathematics. By comparing demographic variables, such as parent education level and quality of family relationships, with academic variables, such as number of past class failures and extra paid classes, the research will seek to identify key predictors of student success. It was found that internet access and interest in higher education were the largest indicators of success.
+This project will analyze data from the Portuguese schools, Gabriel Pereira and Mousinho da Silveira, to determine which factors most strongly influence students' academic performance in mathematics. By comparing demographic variables, such as parent education level and quality of family relationships, with academic variables, such as number of past class failures and extra paid classes, the research will seek to identify key predictors of student success. It was found that low previous class failures and interest in higher education were the largest indicators of success.
 
 ## Introduction
 
