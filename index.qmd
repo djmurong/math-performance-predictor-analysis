@@ -121,7 +121,7 @@ edu_achievement |>
 ```
 
 
-@fig-medu displays how there is a variable trend of student performane in regards to mother's education level. The median final grade for students whose mother has no education is higher than the rest, but there are only a few points of data, making the pattern difficult to generalize.
+@fig-medu displays how there is a variable trend of student performance in regards to mother's education level. The median final grade for students whose mother has no education is higher than the rest, but there are only a few points of data, making the pattern difficult to generalize.
 ```{r}
 #| label: fig-medu
 #| fig-cap: Differences in medians of students' final grades with different mother education level. Mother's education level is defined as "0 = none, 1 = primary, 2 = 5th–9th grade, 3 = secondary, 4 = higher."
