@@ -3,9 +3,10 @@ title: Determining Key Factors Influencing Student Math Performance in Portugues
 subtitle: Report
 bibliography: references.bib
 execute:
-  echo: true
+  echo: false
   message: true
   warning: true
+fig-asp: 0.618
 ---
 
 ## Abstract
@@ -21,22 +22,91 @@ In the early 2000s, Portugal's education was falling behind the rest of Europe, 
 
 In order to analyze which factors are most predictive of student success in Gabriel Pereira and Mousinho da Silveira, the dataset edu_achievement, was used, which contains information on the students' background factors and academic performance. The outcome variable, G3, represents the students' final grade. 
 
-The following variables were explored: number of past class failures, alcohol consumption during weekdays and the weekend, study time, internet access, health status, family relationship strength, mother and father education level, extra paid classes, and free time. To visualize the relationship between internet access and G3, a bar graph was used to compare students with and without internet access. For health status, a scatter plot with a fitted linear regression line was used. Similarly, a scatter plot was also used for family relationship strength. 
+The following 12 variables were explored: interest in higher education, number of past class failures, alcohol consumption during weekdays and the weekend, study time, internet access, health status, family relationship strength, mother and father education level, extra paid classes, and free time. To visualize the relationship between internet access and G3, a bar graph was used to compare students with and without internet access. For health status, a scatter plot with a fitted linear regression line was used. Similarly, a scatter plot was also used for family relationship strength. 
 
 
 
 ## Analysis
 
- Students with internet access had a higher mean final grade (10.6) and median grade (11) than those without access (mean = 9.41, median = 10), suggesting that access to online resources may improve academic performance, by increasing accessibility to resources and supplemental practice.
+First, we plotted a histogram of the counts of final grades to visualize a general distribution of final grades from the dataset, as shown in @fig-general-plot. The histogram shows a slight right-skewed distribution with a large number of potential outliers, each with a final grade of 0. However, we speculate that these 0s are due to the high frequency of student dropping out of school, which leads to an incomplete final grade of 0. We decided not to remove the observations with final grades of 0 because of their prevalence and low chance of resulting from data collection errors, given that the information for all the variables was complete for those observations. Furthermore, we believed they could be meaningful when analyzing the influence of our target predictor variables. The center of the distribution is at a median of 11, which served as a baseline for our future plots.
+
+```{r}
+#| label: load-packages
+#| message: False
+library(tidyverse)
+library(tidymodels)
+library(readxl)
+```
+
+```{r}
+#| label: load-data
+edu_achievement <- read_excel(
+  "data/educationachievement.xlsx",
+  skip = 1
+)
+```
+
+```{r}
+#| label: fig-general-plot
+#| fig-width: 5
+ggplot(edu_achievement, aes(x = G3)) +
+  geom_histogram(binwidth = 1) +
+  labs(
+    title = "Distribution of Final Grades",
+    subtitle = "Portuguese Schools Gabriel Pereira and Mousinho da Silveira",
+    x = "Final Grade",
+    y = "Count"
+  ) +
+  theme_minimal()
+```
+
+After reviewing plots for each predictor variable, we observed that the following variables showed some correlation with final grade performance: interest in higher education, number of past class failures, blah blah blah.
+
+@fig-g3-failures displays how the typical final grade, depicted as the median, decreases as the number of past class failures increases.
+
+```{r}
+#| label: fig-g3-failures
+#| fig-cap: Differences in medians of students' final grades across the number of past class fails they have.
+#| fig-width: 5
+
+ggplot(
+  edu_achievement,
+  aes(
+    x = failures,
+    y = G3,
+    group = factor(failures),
+    fill = factor(failures)
+  )
+) +
+  geom_jitter(
+    color = "black"
+  ) +
+  geom_boxplot(alpha = 0.7) +
+  labs(
+    title = "Final Grade vs Number of Past Class Failures",
+    x = "Number of Past Class Failures",
+    y = "Final Grade"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+Students with internet access had a higher mean final grade (10.6) and median grade (11) than those without access (mean = 9.41, median = 10), suggesting that access to online resources may improve academic performance, by increasing accessibility to resources and supplemental practice.
 
 For health status, the mean final grade slightly increased from 10.0 at health = 3 to 10.4 at health = 5. Similarly, the median indicated that students who reported better health tended to perform slightly better academically. A linear regression confirmed a weak but positive association between health and final grades.
 
-Gor family relationship strength (famrel), mean grades ranged from 9.89 to 10.8, and median grades stayed around 10–11. This consistency suggests that while positive family relationships may contribute to emotional support, they do not strongly predict differences in final academic performance. 
+Gor family relationship strength (famrel), mean grades ranged from 9.89 to 10.8, and median grades stayed around 10–11. This consistency suggests that while positive family relationships may contribute to emotional support, they do not strongly predict differences in final academic performance.
+
+
 
 ## Discussion
 
-Conclusions:
-Limitations:
-- The data we analyzed were limited to math performance and only secondary education of two Portuguese schools. This reduces the generalizability of our conclusions.
-- Weren't able to fully explore the interaction of variables.
-- Weren't able to deeply analyze why certain variables have an influence on math performance.
+Our analysis suggests that the strongest indicators of student success, as measured by final math grades, were interest in pursuing higher education and a low number of past class failures. Students who intended to continue their education beyond secondary school tended to achieve higher grades, possibly reflecting greater academic motivation and a high level of long-term planning. On the other hand, students with a history of course failures tended to perform worse, which could indicate underlying struggles such as poor studying strategies or procrastination.
+
+Interestingly, some factors that might be presumed to have a strong effect on math performance, such as participation in paid extra classes and the amount of alcohol consumption, showed little to no correlation with final grades. These findings suggest that traditional methods for improving educational performance, such as supplementary instruction and alcohol awareness programs, may not apply to all educational contexts and that student motivation and performance history may be far more influential than access to additional academic resources alone. People should exercise caution when making presumptions about which factors most strongly influence academic achievement because they can be misguiding.
+
+The results offer a number of applications for educators and policymakers. Attempts to boost interest in pursuing higher education could exhibit substantial improvements in student performance. Some examples include raising awareness of the benefits to continuing education, reorienting school curricula to encourage academic exploration and the discovery of academic passions, or rewarding academic achievement. Additionally, schools might consider developing support programs that target students with a history of class failures. These programs could, for instance, offer students accountability and help them build or regain confidence. By investing resources that address the strongest factors for educational performance, identified as interest in higher education and the number of past class failures, educational institutions can achieve the highest return on intervention measures.
+
+While our analysis provides meaningful insights, limitations naturally arise. The data we analyzed were limited to math performance among secondary students in two Portuguese schools during the 2005-2006 school year, which reduces the generalizability of our conclusions to other subjects, regions, and educational systems. Furthermore, the data were collected through self-reported questionnaires, which may not fully capture students’ true behaviors, attitudes, or study habits.
+
+The final grade (G3) metric may not account for other important outcomes such as problem-solving or critical thinking skills. Additionally, our analysis did not fully consider the interactions between variables, such as how parental education and school support might jointly influence performance. Since our data are correlational, we cannot infer causation from our analysis. Branching off from that idea, our analysis did not examine whether interest in pursuing a higher education enhances academic performance or whether interest is a result of high academic performance.
