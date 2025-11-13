@@ -61,7 +61,7 @@ ggplot(edu_achievement, aes(x = G3)) +
   theme_minimal()
 ```
 
-After reviewing plots for each predictor variable, we observed that the following variables showed some correlation with final grade performance: interest in higher education, number of past class failures, internet access, study time, and mother's education level.
+After reviewing plots for each predictor variable, we observed that the following variables showed some correlation with final grade performance: interest in higher education, number of past class failures, alcohol consumption, study time, and mother's education level.
 
 @fig-g3-failures displays how the typical final grade, depicted as the median, decreases as the number of past class failures increases.
 ```{r}
