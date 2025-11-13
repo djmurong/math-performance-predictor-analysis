@@ -60,7 +60,7 @@ ggplot(edu_achievement, aes(x = G3)) +
   theme_minimal()
 ```
 
-After reviewing plots for each predictor variable, we observed that the following variables showed some correlation with final grade performance: interest in higher education, number of past class failures, blah blah blah.
+After reviewing plots for each predictor variable, we observed that the following variables showed some correlation with final grade performance: interest in higher education, number of past class failures, internet access, study time, and mother's education level.
 
 @fig-g3-failures displays how the typical final grade, depicted as the median, decreases as the number of past class failures increases.
 
@@ -95,7 +95,7 @@ Students with internet access had a higher mean final grade (10.6) and median gr
 
 For health status, the mean final grade slightly increased from 10.0 at health = 3 to 10.4 at health = 5. Similarly, the median indicated that students who reported better health tended to perform slightly better academically. A linear regression confirmed a weak but positive association between health and final grades.
 
-Gor family relationship strength (famrel), mean grades ranged from 9.89 to 10.8, and median grades stayed around 10–11. This consistency suggests that while positive family relationships may contribute to emotional support, they do not strongly predict differences in final academic performance.
+For family relationship strength (famrel), mean grades ranged from 9.89 to 10.8, and median grades stayed around 10–11. This consistency suggests that while positive family relationships may contribute to emotional support, they do not strongly predict differences in final academic performance.
 
 
 
