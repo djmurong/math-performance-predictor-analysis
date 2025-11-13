@@ -127,9 +127,9 @@ edu_achievement |>
 #| fig-cap: Differences in medians of students' final grades with different mother education level. Mother's education level is defined as "0 = none, 1 = primary, 2 = 5th–9th grade, 3 = secondary, 4 = higher."
 #| fig-width: 5
 
-ggplot(edu_achievement, aes(x = Medu, y = G3, group = Medu, color = Medu)) + 
+ggplot(edu_achievement, aes(x = Medu, y = G3, group = Medu, fill = factor(Medu))) + 
   geom_jitter() +
-  geom_boxplot(alpha = 0.3) +
+  geom_boxplot(alpha = 0.7) +
   labs(
     x = "Mother’s Education Level",
     y = "Final Grade (1-20)",
@@ -137,6 +137,7 @@ ggplot(edu_achievement, aes(x = Medu, y = G3, group = Medu, color = Medu)) +
     subtitle = "Student Performance in Math in the Portugueuse schools of 
 Gabriel Pereira and Mousinho da Silveira"
   ) +
+  theme_minimal() +
   theme(legend.position = "none")
 ```
 
