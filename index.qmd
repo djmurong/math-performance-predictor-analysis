@@ -61,7 +61,7 @@ ggplot(edu_achievement, aes(x = G3)) +
   theme_minimal()
 ```
 
-After reviewing plots for each predictor variable, we observed that the following variables showed some correlation with final grade performance: interest in higher education, number of past class failures, alcohol consumption, study time, and mother's education level.
+After reviewing plots for each predictor variable, we observed that the following variables showed some correlation with final grade performance: interest in higher education, number of past class failures, alcohol consumption, study time, and parent education level.
 
 @fig-g3-failures displays how the typical final grade, depicted as the median, decreases as the number of past class failures increases.
 ```{r}
@@ -95,6 +95,7 @@ ggplot(
 
 ```{r}
 #| label: fig-g3-studytime
+#| fig-cap: Differences in medians of final grade across study time
 new_labels <- c("<2 hrs", "2-5 hrs", "5-10 hrs", ">10 hrs")
 
 edu_achievement |>
@@ -121,32 +122,29 @@ edu_achievement |>
 ```
 
 
-@fig-medu displays how there is a variable trend of student performance in regards to mother's education level. The median final grade for students whose mother has no education is higher than the rest, but there are only a few points of data, making the pattern difficult to generalize.
+@fig-medu displays how there is a variable trend of student performance in regards to parent education level. The median final grade for students whose parent has no education is higher than the rest, but there are only a few points of data, making the pattern difficult to generalize.
 ```{r}
 #| label: fig-medu
-#| fig-cap: Differences in medians of students' final grades with different mother education level. Mother's education level is defined as "0 = none, 1 = primary, 2 = 5th–9th grade, 3 = secondary, 4 = higher."
+#| fig-cap: Differences in medians of students' final grades with different parent education level. Parent education level is defined as "0 = none, 1 = primary, 2 = 5th–9th grade, 3 = secondary, 4 = higher."
 #| fig-width: 5
 
-ggplot(edu_achievement, aes(x = Medu, y = G3, group = Medu, fill = factor(Medu))) + 
+edu_long <- edu_achievement |>
+  pivot_longer(cols = c(Medu, Fedu), names_to = "parent", values_to = "education")
+
+ggplot(edu_long, aes(x = factor(education), y = G3, fill = factor(education))) +
   geom_jitter() +
   geom_boxplot(alpha = 0.7) +
   labs(
-    x = "Mother’s Education Level",
+    x = "Education Level",
     y = "Final Grade (1-20)",
-    title = "Final Grade of Students Based on Mother’s Education Level",
-    subtitle = "Student Performance in Math in the Portugueuse schools of 
-Gabriel Pereira and Mousinho da Silveira"
+    title = "Final Grade of Students Based on Parent’s Education 
+Level",
+    subtitle = "Student Performance in Math in the Portuguese schools of Gabriel 
+Pereira and Mousinho da Silveira"
   ) +
   theme_minimal() +
   theme(legend.position = "none")
 ```
-
-
-Students with internet access had a higher mean final grade (10.6) and median grade (11) than those without access (mean = 9.41, median = 10), suggesting that access to online resources may improve academic performance, by increasing accessibility to resources and supplemental practice.
-
-For health status, the mean final grade slightly increased from 10.0 at health = 3 to 10.4 at health = 5. Similarly, the median indicated that students who reported better health tended to perform slightly better academically. A linear regression confirmed a weak but positive association between health and final grades.
-
-family relationship strength (famrel), mean grades ranged from 9.89 to 10.8, and median grades stayed around 10–11. This consistency suggests that while positive family relationships may contribute to emotional support, they do not strongly predict differences in final academic performance.
 
 
 
