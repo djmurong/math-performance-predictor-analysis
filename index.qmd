@@ -6,6 +6,7 @@ execute:
   echo: false
   message: true
   warning: true
+fig-asp: 0.618
 ---
 
 ## Abstract
@@ -31,6 +32,7 @@ First, we plotted a histogram of the counts of final grades to visualize a gener
 
 ```{r}
 #| label: load-packages
+#| message: False
 library(tidyverse)
 library(tidymodels)
 library(readxl)
