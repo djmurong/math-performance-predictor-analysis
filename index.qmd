@@ -7,6 +7,7 @@ execute:
   message: true
   warning: true
 fig-asp: 0.618
+fig-width: 5
 ---
 
 ## Abstract
@@ -22,7 +23,7 @@ In the early 2000s, Portugal's education was falling behind the rest of Europe, 
 
 In order to analyze which factors are most predictive of student success in Gabriel Pereira and Mousinho da Silveira, the dataset edu_achievement, was used, which contains information on the students' background factors and academic performance. The outcome variable, G3, represents the students' final grade. 
 
-The following 12 variables were explored: interest in higher education, number of past class failures, alcohol consumption during weekdays and the weekend, study time, internet access, health status, family relationship strength, mother and father education level, extra paid classes, and free time. To visualize the relationship between internet access and G3, a bar graph was used to compare students with and without internet access. For health status, a scatter plot with a fitted linear regression line was used. Similarly, a scatter plot was also used for family relationship strength. 
+The following 12 variables were explored: interest in higher education, number of past class failures, alcohol consumption during weekdays and the weekend, study time, internet access, health status, family relationship strength, mother and father education level, extra paid classes, and free time. To visualize the relationship between internet access and G3, a bar graph was used to compare students with and without internet access. For health status, a scatter plot with a fitted linear regression line was used. Similarly, a scatter plot was also used for family relationship strength.
 
 
 
@@ -60,7 +61,7 @@ ggplot(edu_achievement, aes(x = G3)) +
   theme_minimal()
 ```
 
-After reviewing plots for each predictor variable, we observed that the following variables showed some correlation with final grade performance: interest in higher education, number of past class failures, blah blah blah.
+After reviewing plots for each predictor variable, we observed that the following variables showed some correlation with final grade performance: interest in higher education, number of past class failures, study time, parent education levels (mother and father), **blah blah blah**.
 
 @fig-g3-failures displays how the typical final grade, depicted as the median, decreases as the number of past class failures increases.
 
@@ -83,12 +84,41 @@ ggplot(
   ) +
   geom_boxplot(alpha = 0.7) +
   labs(
-    title = "Final Grade vs Number of Past Class Failures",
+    title = "Final Grade vs. Number of Past Class Failures",
     x = "Number of Past Class Failures",
     y = "Final Grade"
   ) +
   theme_minimal() +
   theme(legend.position = "none")
+```
+
+@fig-g3-studytime reveals a slight increase in the typical final grade as amount of study time increase.
+
+```{r}
+#| label: fig-g3-studytime
+new_labels <- c("<2 hrs", "2-5 hrs", "5-10 hrs", ">10 hrs")
+
+edu_achievement |>
+  mutate(
+    studytime = factor(studytime, labels = new_labels)
+  ) |>
+  ggplot(
+    aes(
+      x = studytime,
+      y = G3,
+      fill = studytime
+    )
+  ) +
+    geom_jitter() +
+    geom_boxplot(alpha = 0.7) +
+    labs(
+      title = "Final Grades vs. Study Time",
+      x = "Study Time (Levels of Hour Ranges)",
+      y = "Final Grade",
+      fill = "Study Time"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "top")
 ```
 
 Students with internet access had a higher mean final grade (10.6) and median grade (11) than those without access (mean = 9.41, median = 10), suggesting that access to online resources may improve academic performance, by increasing accessibility to resources and supplemental practice.

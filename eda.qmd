@@ -43,6 +43,9 @@ ggplot(edu_achievement, aes(x = G3)) +
     y = "Count"
   ) +
   theme_minimal()
+
+edu_achievement |>
+  summarize(median = median(G3))
 ```
 The bin width of 1 for @fig-general-plot was selected to align with the final grade of 0-20.
 ```{r}
@@ -64,7 +67,7 @@ ggplot(
   ) +
   geom_boxplot(alpha = 0.7) +
   labs(
-    title = "Final Grade vs Number of Past Class Failures",
+    title = "Final Grade vs. Number of Past Class Failures",
     x = "Number of Past Class Failures",
     y = "Final Grade"
   ) +
@@ -105,7 +108,7 @@ ggplot(aes(x = alc_lvl, y = G3, group = alc_lvl, color = alc_lvl)) +
   ) +
   facet_grid(rows = vars(alc_type), labeller = labeller(.rows = new_labels)) +
   labs(
-    title = "Final Grade vs Alcoholic Consumption Level",
+    title = "Final Grade vs. Alcoholic Consumption Level",
     subtitle = "Separated by Weekday and Weekend",
     x = "Alcoholic Consumption Level",
     y = "Final Grade"
