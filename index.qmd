@@ -120,8 +120,7 @@ edu_achievement |>
     theme(legend.position = "top")
 ```
 
-
-@fig-medu displays how there is a variable trend of student performance in regards to parent education level. The median final grade for students whose parent has no education is higher than the rest, but there are only a few points of data that that category, making the pattern difficult to confirm.
+@fig-medu displays how there is a variable trend of student performance in regards to parent education level. The median final grade for students whose parent has no education is higher than the rest, but there are only a few points of data that that category, making the pattern difficult to confirm. Nonetheless, the trend is not strong enough to be considered one of the strongest factors of student performance.
 
 ```{r}
 #| label: fig-medu
