@@ -12,7 +12,7 @@ fig-width: 5
 
 ## Abstract
 
-This project will analyze data from the Portuguese schools, Gabriel Pereira and Mousinho da Silveira, to determine which factors most strongly influence students' academic performance in mathematics. By comparing demographic variables, such as parent education level and quality of family relationships, with academic variables, such as number of past class failures and extra paid classes, the research will seek to identify key predictors of student success. It was found that low previous class failures and interest in higher education were the largest indicators of success.
+This project will analyze data from the Portuguese schools, Gabriel Pereira and Mousinho da Silveira, to determine which factors most strongly influence students' academic performance in mathematics. By comparing demographic variables, such as parent education level and quality of family relationships, and academic variables, such as number of past class failures and extra paid classes, the research will seek to identify key predictors of student success. Many side-by-side boxplots were analyzed to examine any trends between changes in final grade and the explored predictor variables. It was found that a low number of previous class failures and interest in higher education were the largest indicators of success. Our results suggest that education systems should consider focusing on areas related to these two indicators to maximize academic performance.
 
 ## Introduction
 
@@ -60,7 +60,7 @@ ggplot(edu_achievement, aes(x = G3)) +
   theme_minimal()
 ```
 
-After reviewing plots for each predictor variable, we observed that the following variables showed some correlation with final grade performance: interest in higher education, number of past class failures, alcohol consumption, study time, and parent education level.
+After reviewing plots for each predictor variable, we observed that the following variables showed some correlation with final grade performance: interest in higher education, number of past class failures, study time, and parent education level.
 
 @fig-g3-failures displays how the typical final grade, depicted as the median, decreases as the number of past class failures increases.
 ```{r}
@@ -82,7 +82,7 @@ ggplot(
   ) +
   geom_boxplot(alpha = 0.7) +
   labs(
-    title = "Final Grade vs. Number of Past Class Failures",
+    title = "Relationship Between Final Grade and\nNumber of Past Class Failures",
     x = "Number of Past Class Failures",
     y = "Final Grade"
   ) +
@@ -90,7 +90,7 @@ ggplot(
   theme(legend.position = "none")
 ```
 
-@fig-g3-studytime reveals a slight increase in the typical final grade as amount of study time increase.
+@fig-g3-studytime reveals a slight increase in the typical final grade as amount of study time increase, although not substantial enough to be among the strongest factors.
 
 ```{r}
 #| label: fig-g3-studytime
@@ -111,7 +111,7 @@ edu_achievement |>
     geom_jitter() +
     geom_boxplot(alpha = 0.7) +
     labs(
-      title = "Final Grades vs. Study Time",
+      title = "Relationship Between Final Grade and Study Time",
       x = "Study Time (Levels of Hour Ranges)",
       y = "Final Grade",
       fill = "Study Time"
@@ -121,7 +121,8 @@ edu_achievement |>
 ```
 
 
-@fig-medu displays how there is a variable trend of student performance in regards to parent education level. The median final grade for students whose parent has no education is higher than the rest, but there are only a few points of data, making the pattern difficult to generalize.
+@fig-medu displays how there is a variable trend of student performance in regards to parent education level. The median final grade for students whose parent has no education is higher than the rest, but there are only a few points of data that that category, making the pattern difficult to confirm.
+
 ```{r}
 #| label: fig-medu
 #| fig-cap: Differences in medians of students' final grades with different parent education level. Parent education level is defined as "0 = none, 1 = primary, 2 = 5th–9th grade, 3 = secondary, 4 = higher."
@@ -136,8 +137,7 @@ ggplot(edu_long, aes(x = factor(education), y = G3, fill = factor(education))) +
   labs(
     x = "Education Level",
     y = "Final Grade (1-20)",
-    title = "Final Grade of Students Based on Parent’s Education 
-Level",
+    title = "Relationship Between Final Grade and\nParent’s Education Level",
     subtitle = "Student Performance in Math in the Portuguese schools of Gabriel 
 Pereira and Mousinho da Silveira"
   ) +
@@ -157,10 +157,11 @@ ggplot(edu_achievement, aes(x = higher, y = G3, fill = higher)) +
   geom_jitter() +
   geom_boxplot(alpha=0.7) +
   labs(
-    title = "Relationship Between Higher Ed Interest and Final Grade",
+    title = "Relationship Between Final Grade and\nHigher Education Interest",
     x = "Intent to Pursue Higher Education",
-    y = "Final Grade") +
-  theme_minimal(base_size = 10) +
+    y = "Final Grade"
+  ) +
+  theme_minimal() +
   theme(legend.position = "none")
 ```
 

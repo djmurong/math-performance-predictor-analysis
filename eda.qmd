@@ -81,8 +81,11 @@ edu_achievement |>
   group_by(failures) |>
   summarize(
     median = median(G3),
-    mean = mean(G3)
+    mean = mean(G3),
   )
+
+edu_achievement |>
+  summarize(r = cor(failures, G3))
 ```
 
 Based on the side-by-side boxplots in @fig-g3-failures and the summary above of medians and means for final grades, we observe a downward trend of the typical final grade as the number of past class failures increases. An interesting observation from the side-by-side jitterplots is that there seems to be a pattern of two clusters: a large, arguably primary, cluster with data points with higher final grades and a smaller cluster around a final grade of 0. This observed pattern mirrors the potential outliers highlighted in the histogram in @fig-general-plot. The gap between the two clusters in each distribution is substantial, especially for the one with students having 0 past class failures. Perhaps there is another variable that could explain this pattern. Nevertheless, it seems that the number of past class failures is a moderately strong indicator of math performance.
@@ -127,11 +130,15 @@ ggplot(aes(x = alc_lvl, y = G3, group = alc_lvl, color = alc_lvl)) +
 ```{r}
 #| label: alc-summarize
 edu_achievement_longer |>
-  group_by(alc_lvl, alc_type) |>
+  group_by(alc_type, alc_lvl) |>
   summarize(
     median = median(G3),
     mean = mean(G3)
   )
+
+edu_achievement_longer |>
+  group_by(alc_type) |>
+  summarize(r = cor(alc_lvl, G3))
 ```
 
 The faceted side-by-side boxplots and the summary show that the distributions of final grades for each combination of alcohol consumption type (weekday or weekend) and level all center at approximately 10-11.
@@ -174,6 +181,9 @@ edu_achievement |>
     median = median(G3),
     mean = mean(G3)
   )
+
+edu_achievement |>
+  summarize(r = cor(studytime, G3))
 ```
 Again, we see the pattern of a large cluster of higher final grades and smaller cluster of lower final grades for the majority of the distributions here.
 The distributions of final grades across amount of study time have similar variability. Their shapes are slightly symmetric to left-skewed. However, there is a slight increase in the mean and median final grade as study time increases. Given that observation, there appears to be a weak influence of study time on final grades.
@@ -205,6 +215,19 @@ Gabriel Pereira and Mousinho da Silveira"
   ) +
   theme(legend.position = "none")
 ```
+Medu and G3 correlation:
+```{r}
+#| label: medu-summarize
+edu_achievement |>
+  summarize(r = cor(Medu, G3))
+```
+
+Fedu and G3 correlation:
+```{r}
+#| label: fedu-summarize
+edu_achievement |>
+  summarize(r = cor(Fedu, G3))
+```
 
 ```{r}
 #| label: fig-internet-g3
@@ -227,6 +250,7 @@ edu_achievement |>
   )
 
 ```
+
 Students with internet access had slightly higher average and median final grades.This suggests that internet access may provide academic advantages — possibly through easier access to online learning materials, homework help, or communication with teachers.
 ```{r}
 #| label: health-g3-plot
@@ -249,6 +273,13 @@ edu_achievement |>
   )
   
 ```
+
+```{r}
+#| label: health-summarize
+edu_achievement |>
+  summarize(r = cor(health, G3))
+```
+
 There is a mild positive trend where students reporting better health (1–5 scale) tend to have slightly higher grades. The slope from the regression equation will likely be small but positive, suggesting that overall health may have a modest influence on academic outcomes.
 ```{r}
 ggplot(edu_achievement, aes(x = factor(famrel), y = G3, fill = factor(famrel))) +
@@ -270,6 +301,13 @@ edu_achievement |>
     .groups = "drop"
   )
 ```
+
+```{r}
+#| label: famrel-summarize
+edu_achievement |>
+  summarize(r = cor(famrel, G3))
+```
+
 Family relationship strength shows a small, mostly stable pattern — students who report stronger family relationships have slightly higher grades on average. The regression may produce a weak positive slope, indicating potentially supportive effects of a positive home environment on academic achievement.
 ```{r}
 #| label: fig-paid-g3
@@ -304,6 +342,12 @@ ggplot(
     y = "Final Grade") +
   theme_minimal(base_size = 14) +
   theme(legend.position = "none")
+```
+
+```{r}
+#| label: freetime-summarize
+edu_achievement |>
+  summarize(r = cor(freetime, G3))
 ```
 
 ```{r}
