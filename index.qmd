@@ -23,7 +23,7 @@ In the early 2000s, Portugal's education system was falling behind the rest of E
 
 In order to analyze which factors are most predictive of student success in Gabriel Pereira and Mousinho da Silveira, the dataset edu_achievement was used, which contains information on the students' background factors and academic performance. The outcome variable, G3, represents the students' final grades. 
 
-The following 12 variables were explored: interest in higher education, number of past class failures, alcohol consumption during weekdays and the weekend, study time, internet access, health status, family relationship strength, mother and father education level, extra paid classes, and free time. To visualize the relationship between parent education and G3, the Medu (mother's education level) and Fedu (father's education level), pivot_longer() was used to combine the two education levels into a single education column.
+The following 12 variables were explored: interest in higher education, number of past class failures, alcohol consumption during weekdays and the weekend, study time, internet access, health status, family relationship strength, mother and father education level, extra paid classes, and free time. To visualize the relationship between G3 parent education level, the Medu (mother's education level) and Fedu (father's education level), pivot_longer() was used to combine the two education levels into a single education column.
 
 
 ## Analysis
@@ -97,13 +97,7 @@ new_labels <- c("<2 hrs", "2-5 hrs", "5-10 hrs", ">10 hrs")
 
 edu_achievement |>
   mutate(studytime = factor(studytime, labels = new_labels)) |>
-  ggplot(
-    aes(
-      x = studytime,
-      y = G3,
-      fill = studytime
-    )
-  ) +
+  ggplot(aes(x = studytime, y = G3, fill = studytime)) +
     geom_jitter() +
     geom_boxplot(alpha = 0.7) +
     labs(
@@ -120,7 +114,7 @@ edu_achievement |>
 
 ```{r}
 #| label: fig-medu
-#| fig-cap: Differences in medians of students' final grades with different parent education level. Parent education level is defined as "0 = none, 1 = primary, 2 = 5th–9th grade, 3 = secondary, 4 = higher."
+#| fig-cap: Differences in medians of students' final grade with different parent education level. Parent education level is defined as "0 = none, 1 = primary, 2 = 5th–9th grade, 3 = secondary, 4 = higher."
 #| fig-width: 5
 
 edu_long <- edu_achievement |>
@@ -144,7 +138,7 @@ ggplot(edu_long, aes(x = factor(education), y = G3, fill = factor(education))) +
 
 ```{r}
 #| label: fig-higher-ed-interest
-#| fig-cap: Differences in final grade based on interest in higher pursuing higher education
+#| fig-cap: Differences in final grade based on interest in pursuing higher education
 #| fig-width: 5
 #| message: false
 ggplot(edu_achievement, aes(x = higher, y = G3, fill = higher)) +
