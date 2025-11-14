@@ -146,6 +146,22 @@ Pereira and Mousinho da Silveira"
 ```
 
 
+```{r}
+#| label: fig-higher-ed-interest-g3
+#| fig-cap: Differences in final grade based on interest in higher pursuing higher education
+#| fig-width: 5
+#| message: false
+ggplot(edu_achievement, aes(x = higher, y = G3, fill = higher)) +
+  geom_boxplot(alpha=0.7) +
+  labs(
+    title = "Relationship Between Higher Education Interest and Final Grade",
+    x = "Intent to Pursue Higher Education",
+    y = "Final Grade") +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none")
+```
+
+
 
 ## Discussion
 
