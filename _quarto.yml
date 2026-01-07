@@ -12,7 +12,7 @@ author: # Replace with team member names
 
 website:
   title: the-pipe-operators
-  favicon: favicon.png
+  favicon: resources/favicon.png
   navbar:
     left:
       - text: Home
