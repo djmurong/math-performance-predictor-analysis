@@ -12,12 +12,13 @@ author: # Replace with team member names
 
 website:
   title: the-pipe-operators
+  favicon: favicon.png
   navbar:
     left:
       - text: Home
         href: index.qmd
       - text: Presentation
-        href: presentation.pdf  
+        href: presentation.pdf
       - text: Proposal
         href: proposal.qmd
       - text: EDA
@@ -29,7 +30,7 @@ website:
 
     right:
       - icon: github
-        href: "https://github.com/djmurong/math-performance-predictor-analysis.git" 
+        href: "https://github.com/djmurong/math-performance-predictor-analysis.git"
 
 format:
   html:
