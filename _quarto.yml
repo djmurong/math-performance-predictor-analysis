@@ -29,7 +29,7 @@ website:
 
     right:
       - icon: github
-        href: "https://github.com/sta199-f25/project-the-pipe-operators.git" 
+        href: "https://github.com/djmurong/math-performance-predictor-analysis.git" 
 
 format:
   html:
