@@ -18,7 +18,7 @@ website:
       - text: Home
         href: index.qmd
       - text: Presentation
-        href: presentation.pdf
+        href: presentation.qmd
       - text: Proposal
         href: proposal.qmd
       - text: EDA
