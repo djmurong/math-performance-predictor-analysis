@@ -24,13 +24,30 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libfontconfig1-dev
+          sudo apt-get install -y \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libxml2-dev \
+            libfontconfig1-dev \
+            libudunits2-dev \
+            libharfbuzz-dev \
+            libfribidi-dev \
+            libjpeg-dev \
+            libpng-dev \
+            libtiff-dev \
+            default-jdk \
+            libgeos-dev \
+            libproj-dev \
+            libgdal-dev \
+            pkg-config
 
       - name: Install R packages
         run: |
           Rscript -e "options(repos = c(CRAN = 'https://cran.rstudio.com/'))"
-          Rscript -e "install.packages(c('tidyverse', 'readxl', 'tidymodels', 'GGally', 'naniar', 'janitor', 'skimr', 'car'), dependencies = TRUE, Ncpus = 2)"
-          Rscript -e "library(tidyverse); library(readxl); library(tidymodels)"
+          Rscript -e "install.packages(c('tidyverse', 'readxl', 'tidymodels'), dependencies = TRUE, Ncpus = 2)"
+          Rscript -e "if (!require('tidyverse', quietly = TRUE)) { install.packages('tidyverse', dependencies = TRUE); library(tidyverse) }"
+          Rscript -e "if (!require('readxl', quietly = TRUE)) { install.packages('readxl', dependencies = TRUE); library(readxl) }"
+          Rscript -e "if (!require('tidymodels', quietly = TRUE)) { install.packages('tidymodels', dependencies = TRUE); library(tidymodels) }"
 
       - name: Render Quarto Project
         run: |
